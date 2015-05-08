@@ -33,6 +33,59 @@ void variables() {
   
 }
 
+void strings() {
+  NSString *make = @"Porsche";
+  NSString *model = @"911";
+  int year = 1968;
+  NSString *message = [NSString stringWithFormat:@"That's a %@ %@ from %d!",
+                       make, model, year];
+  NSLog(@"\n%@\n", message);
+  
+  for (int i=0; i<[make length]; i++) {
+    unichar letter = [make characterAtIndex:i];
+    NSLog(@"\n%d: %hu\n", i, letter);
+  }
+  
+  // NSString's are pointers, so don't compare using ==, etc.
+  // Use these methods instead!
+  NSString *car = @"Porsche Boxster";
+  if ([car isEqualToString:@"Porsche Boxster"]) {
+    NSLog(@"That car is a Porsche Boxster");
+  }
+  if ([car hasPrefix:@"Porsche"]) {
+    NSLog(@"That car is a Porsche of some sort");
+  }
+  if ([car hasSuffix:@"Carrera"]) {
+    // This won't execute
+    NSLog(@"That car is a Carrera");
+  }
+  
+  // You can also compare strings
+  // This is case sensitive, use caseInsensitiveCompare otherwise
+  NSString *otherCar = @"Ferrari";
+  NSComparisonResult result = [car compare:otherCar];
+  if (result == NSOrderedAscending) {
+    NSLog(@"The letter 'P' comes before 'F'");
+  } else if (result == NSOrderedSame) {
+    NSLog(@"We're comparing the same string");
+  } else if (result == NSOrderedDescending) {
+    NSLog(@"The letter 'P' comes after 'F'");
+  }
+  
+  // You can combine strings, but...
+  // NSString is immutable, so this returns a new string
+  // NSMutableString is mutable though...
+  make = @"Ferrari";
+  model = @"458 Spider";
+  car = [make stringByAppendingString:model];
+  NSLog(@"%@", car);        // Ferrari458 Spider
+  car = [make stringByAppendingFormat:@" %@", model];
+  NSLog(@"%@", car);        // Ferrari 458 Spider (note the space)
+  
+  // A whole lot more on strings here:
+  // http://rypress.com/tutorials/objective-c/data-types/nsstring
+}
+
 // ================================
 // === BLOCKS =====================
 // ================================
