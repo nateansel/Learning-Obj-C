@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "sampleClass.h"
 
 /* Data Types:
       1. int
@@ -61,94 +62,8 @@ void testBlocks() {
 // === SAMPLE CLASS ===============
 // ================================
 
-// @interface usually goes in .h
-@interface myClass : NSObject {
-  NSString *description;
-  NSNumber *count;
-}
-
-- (int)max:(int)num1 andNum2:(int)num2;
-+ (int)min:(int)num1 andNum2:(int)num2;
-
-// Setters
-- (void) setDescription : (NSString*)newDescription;
-- (void) setCount : (NSNumber*)newCount;
-- (void) setCountAndDescription : (NSString*)newDescription
-                                  andCount: (NSNumber*)newCount;
-
-// Getters
-- (NSString*) description;
-- (NSNumber*) count;
-
-// Helpers
-- (void) printInfo;
-
-@end
-
-// @implementation usually goes in .m
-@implementation myClass
-
-// - means instance method
-// + means class method
-- (int)max:(int)num1 andNum2:(int)num2 {
-  int result;
-  
-  if(num1 > num2) {
-    result = num1;
-  }
-  else {
-    result = num2;
-  }
-  return result;
-}
-
-+ (int)min:(int)num1 andNum2:(int)num2 {
-  int result;
-  
-  if(num1 < num2) {
-    result = num1;
-  }
-  else {
-    result = num2;
-  }
-  return result;
-}
-
-// Setters
-- (void) setDescription : (NSString*)newDescription {
-  description = [[NSString alloc] initWithString:newDescription];
-}
-
-- (void) setCount : (NSNumber*)newCount {
-  count = [[NSNumber alloc] init];
-  count = newCount;
-}
-
-- (void) setCountAndDescription : (NSString*)newDescription
-                        andCount: (NSNumber*)newCount {
-  [self setDescription:newDescription];
-  [self setCount:newCount];
-}
-
-// Getters
-- (NSString*) description {
-  return description;
-}
-
-- (NSNumber*) count {
-  return count;
-}
-
-// Helpers
-- (void) printInfo {
-  NSLog(@"\nDescription: %@\n", description);
-  NSLog(@"\nCount: %@\n", count);
-}
-
-
-@end
-
 void testSampleClass() {
+  // Test class versus object methods
   /*
   int a = 100;
   int b = 200;
@@ -164,6 +79,8 @@ void testSampleClass() {
   NSLog(@"\nMax value is %d\n", retVal);
    */
   
+  // Test setters and getters
+  /*
   myClass *myObject = [[myClass alloc] init];
   NSNumber *num1 = [NSNumber numberWithInt:100];
   NSNumber *num2 = [NSNumber numberWithInt:50];
@@ -174,6 +91,28 @@ void testSampleClass() {
   
   [myObject setCountAndDescription:@"Testing Again" andCount: num2];
   [myObject printInfo];
+   */
+  
+  // Test @property and @synthesize
+  /*
+  myClass2 *myObject = [[myClass2 alloc] init];
+  NSNumber *num1 = [NSNumber numberWithInt:100];
+  NSNumber *num2 = [NSNumber numberWithInt:50];
+  [myObject printInfo];
+  [myObject setCount:num1];
+  [myObject setDescription:@"Test"];
+  [myObject printInfo];
+  
+  [myObject setCountAndDescription:@"Testing Again" andCount: num2];
+  [myObject printInfo];
+  */
+  
+  // Test categories
+  NSString* testString = @"Just a test";
+  NSLog(@"\nOriginal: %@\n", testString);
+  testString = [testString reverseString];
+  NSLog(@"\nReversed: %@", testString);
+  
 }
 
 // ================================
