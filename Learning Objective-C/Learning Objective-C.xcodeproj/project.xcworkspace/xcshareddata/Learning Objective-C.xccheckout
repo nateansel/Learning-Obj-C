@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>95D42AC8-A659-497E-A7D5-9ED0697C1094</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Learning Objective-C</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9D2AC042C854D40C9B639BD661D4A8ECC956B79A</key>
+		<string>https://github.com/nathan3o4/Learning-Obj-C.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Learning Objective-C/Learning Objective-C.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9D2AC042C854D40C9B639BD661D4A8ECC956B79A</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nathan3o4/Learning-Obj-C.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9D2AC042C854D40C9B639BD661D4A8ECC956B79A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9D2AC042C854D40C9B639BD661D4A8ECC956B79A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Learning-Obj-C</string>
+		</dict>
+	</array>
+</dict>
+</plist>
