@@ -29,7 +29,7 @@ void variables() {
   
   // This is how you declare object variables
   // the @ sign is used to declare a literal
-  NSString *myString = @"My string.";
+  NSString *myString = @"\nMy string.\n";
   
   // NSString and NSNumber are objects, which mean they have methods
   // For example, NSString has a 'length' method
@@ -73,7 +73,7 @@ void strings() {
   }
   
   // You can also compare strings
-  // This is case sensitive, use caseInsensitiveCompare otherwise
+  // compare: is case sensitive, use caseInsensitiveCompare: otherwise
   NSString *otherCar = @"Ferrari";
   NSComparisonResult result = [car compare:otherCar];
   if (result == NSOrderedAscending) {
