@@ -107,6 +107,9 @@ void strings() {
 // ================================
 
 void arrays() {
+  // Fun fact about NSArray: it can't store primitive data types, only objects
+  // i.e. it can store an NSNumber, but not an int!
+  
   // Create an array with initial NSString literals
   NSArray *array = [[NSArray alloc] initWithObjects:@"item1", @"item2", @"item3", nil];
   // "Fast Enumeration Syntax"
@@ -114,6 +117,42 @@ void arrays() {
   for(NSString *string in array) {
     NSLog(@"\nValue: %@\n", string);
   }
+  
+  // The -objectAtIndex: instance method returns an id, a generic object in Cocoa.
+  // Since you can hold any type of object you want in an NSArray,
+  // when you access an object it gives you back a generic object type.
+  // It doesn't know what types of objects are being stored.
+  id thing = [array objectAtIndex:0];
+  int howMany = (int)[array count];
+}
+
+
+
+
+
+// ================================
+// === DICTIONARIES ===============
+// ================================
+
+void dictionaries() {
+  // Notice how dictionaries, like arrays, have to be nil terminated
+  // When using dictionaryWithObjectsAndKeys, alternate object, key, object, key
+  NSDictionary *myDict = [NSDictionary
+                          dictionaryWithObjectsAndKeys:@"aObj", @"aKey", @"bObj", @"bKey", nil];
+  
+  NSArray *objs = [NSArray arrayWithObjects:@"One", @"Two", @"Three", nil];
+  NSArray *keys = [NSArray arrayWithObjects:@"Blue", @"Green", @"Yellow", nil];
+  NSDictionary *anotherDict = [NSDictionary
+                               dictionaryWithObjects:objs forKeys:keys];
+  
+  // A common use of NSDictionary is within an array: each element in the array is an NSDictionary object.
+  // For example, if you're building a Twitter app, the information for each tweet could sit in an NSDictionary,
+  // then each of these dictionaries is kept in order within an NSArray.
+  // Example:
+  
+  // First, find the dictionary in the 4th position in the array.
+  // Then, access the object paired with the key "tweet_text"
+  //NSString *status = [[myArray objectAtIndex:4] objectForKey:@"tweet_text"];
 }
 
 
@@ -181,24 +220,27 @@ void testSampleClass() {
    */
   
   // Test @property and @synthesize
-  /*
+  
   myClass2 *myObject = [[myClass2 alloc] init];
-  NSNumber *num1 = [NSNumber numberWithInt:100];
   NSNumber *num2 = [NSNumber numberWithInt:50];
   [myObject printInfo];
-  [myObject setCount:num1];
+  [myObject setCount:[NSNumber numberWithInt:100]];
+  // CAN ALSO USE DOT NOTATION WITH PROPERTIES:
+  // myObject.count = num1;
   [myObject setDescription:@"Test"];
   [myObject printInfo];
   
   [myObject setCountAndDescription:@"Testing Again" andCount: num2];
   [myObject printInfo];
-  */
+  
   
   // Test categories
+  /*
   NSString* testString = @"Just a test";
   NSLog(@"\nOriginal: %@\n", testString);
   testString = [testString reverseString];
   NSLog(@"\nReversed: %@", testString);
+   */
   
 }
 

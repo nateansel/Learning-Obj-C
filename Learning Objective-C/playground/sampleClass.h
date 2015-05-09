@@ -51,8 +51,10 @@
 // Setters
 
 // @property sets atrributes
-// readwrite automaticalluy creates setters and getters
-// has to be paired with @synthesize in implementation
+// readwrite automatically creates setters and getters
+// has to be paired with @synthesize in implementation.
+// Fun fact: if you use properties, you don't even have to
+// declare the instance vafriables up there in the curly braces
 @property(readwrite, strong) NSString *description;
 @property(readwrite, strong) NSNumber *count;
 
