@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "sampleClass.h"
 
+
+// ================================
+// === VARIABLES ==================
+// ================================
+
 /* Data Types:
       1. int
       2. float
@@ -30,8 +35,15 @@ void variables() {
   // For example, NSString has a 'length' method
   int stringLength = [myString length];
   printf("%d\n", stringLength);
-  
 }
+
+
+
+
+
+// ================================
+// === STRINGS ====================
+// ================================
 
 void strings() {
   NSString *make = @"Porsche";
@@ -85,6 +97,28 @@ void strings() {
   // A whole lot more on strings here:
   // http://rypress.com/tutorials/objective-c/data-types/nsstring
 }
+
+
+
+
+
+// ================================
+// === ARRAYS =====================
+// ================================
+
+void arrays() {
+  // Create an array with initial NSString literals
+  NSArray *array = [[NSArray alloc] initWithObjects:@"item1", @"item2", @"item3", nil];
+  // "Fast Enumeration Syntax"
+  // Basically, Python style for loops
+  for(NSString *string in array) {
+    NSLog(@"\nValue: %@\n", string);
+  }
+}
+
+
+
+
 
 // ================================
 // === BLOCKS =====================
@@ -181,6 +215,7 @@ int main() {
   
   testSampleClass();
   //testBlocks();
+  //arrays();
   
   return 0;
 }
