@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSV-a9-QkF">
+                                <rect key="frame" x="239" y="82" width="123" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="hZZ-id-ZzD"/>
+                                    <constraint firstAttribute="height" constant="21" id="wwH-X4-HaE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wk-1h-6eL">
+                                <rect key="frame" x="249" y="406" width="102" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="XaH-J3-LFd"/>
+                                    <constraint firstAttribute="height" constant="128" id="vsK-T4-YRM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIv-hG-or6">
+                                <rect key="frame" x="199" y="229" width="203" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="Vuo-ot-CB5"/>
+                                    <constraint firstAttribute="height" constant="93" id="rG8-6x-Rd3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="Tap Me!">
+                                    <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OYU-Yp-lR5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTi-Rb-1hN">
+                                <rect key="frame" x="263" y="162" width="74" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="PwX-ba-OGP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Start!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Dhh-Pg-yG2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="SIv-hG-or6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="229" id="6aP-fL-LuG"/>
+                            <constraint firstItem="nSV-a9-QkF" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="82" id="NOa-Zo-FvC"/>
+                            <constraint firstItem="gTi-Rb-1hN" firstAttribute="centerX" secondItem="nSV-a9-QkF" secondAttribute="centerX" id="V1q-Kb-pRR"/>
+                            <constraint firstItem="SIv-hG-or6" firstAttribute="top" secondItem="gTi-Rb-1hN" secondAttribute="bottom" constant="21" id="eW3-ve-Goq"/>
+                            <constraint firstItem="SIv-hG-or6" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="fnE-Pq-OJv"/>
+                            <constraint firstItem="SIv-hG-or6" firstAttribute="centerX" secondItem="nSV-a9-QkF" secondAttribute="centerX" id="hf1-A7-lzW"/>
+                            <constraint firstItem="gTi-Rb-1hN" firstAttribute="top" secondItem="nSV-a9-QkF" secondAttribute="bottom" constant="59" id="mI8-Dc-QZt"/>
+                            <constraint firstItem="6wk-1h-6eL" firstAttribute="centerX" secondItem="SIv-hG-or6" secondAttribute="centerX" id="oro-6W-aae"/>
+                            <constraint firstAttribute="bottom" secondItem="6wk-1h-6eL" secondAttribute="bottom" constant="66" id="yuZ-wv-pBu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="6wk-1h-6eL" id="zta-oU-9JI"/>
+                        <outlet property="startStop" destination="gTi-Rb-1hN" id="4cg-Fd-wNp"/>
+                        <outlet property="timerLabel" destination="nSV-a9-QkF" id="BQY-4W-L0V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
