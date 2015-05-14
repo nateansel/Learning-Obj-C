@@ -32,7 +32,7 @@
 
 - (void)getTimeUntilSunset {
   NSDate *currentTime = [NSDate date];
-  NSTimeInterval timeBetweenDates = [sunset timeIntervalSinceDate:currentTime];
+    NSTimeInterval timeBetweenDates = [sunset timeIntervalSinceDate:currentTime];
   double secondsInAnHour = 3600;
   double secondsInAMinute = 60;
   double hoursBetweenDates = timeBetweenDates / secondsInAnHour;
@@ -44,8 +44,8 @@
     timeUntil.text = [NSString stringWithFormat:@"%.1f hours until the sun sets", hoursBetweenDates];
   }
   else {
-    timeUntil.text = [NSString stringWithFormat:@"? hours until the sun sets"];
-    NSLog("%.5f\n", minutesBetweenDates);
+    timeUntil.text = [NSString stringWithFormat:@"The sun has set"];
+    NSLog(@"%.5f\n", minutesBetweenDates);
   }
 }
 
