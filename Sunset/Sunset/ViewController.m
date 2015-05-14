@@ -37,13 +37,18 @@
   double secondsInAMinute = 60;
   double hoursBetweenDates = timeBetweenDates / secondsInAnHour;
   double minutesBetweenDates = timeBetweenDates / secondsInAMinute;
+  UIColor *orangeColor = [UIColor colorWithRed:0.894 green:0.41 blue:0.041 alpha:1];
+  UIColor *blueColor = [UIColor colorWithRed:0.007 green:0.564 blue:1 alpha:1];
   if (hoursBetweenDates < 1.0 && hoursBetweenDates > 0.0) {
+    self.view.backgroundColor = orangeColor;
     timeUntil.text = [NSString stringWithFormat:@"%.1f minutes until the sun sets", minutesBetweenDates];
   }
   else if (hoursBetweenDates > 1.0) {
+    self.view.backgroundColor = orangeColor;
     timeUntil.text = [NSString stringWithFormat:@"%.1f hours until the sun sets", hoursBetweenDates];
   }
   else {
+    self.view.backgroundColor = blueColor;
     timeUntil.text = [NSString stringWithFormat:@"The sun has set"];
     NSLog(@"%.5f\n", minutesBetweenDates);
   }
