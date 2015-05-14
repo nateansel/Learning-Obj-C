@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E20A8171B051AFB00A30755 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3C72541B026263003FD3F0 /* CoreLocation.framework */; };
+		2E36CCB01B05304900B55335 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E36CCAF1B05304900B55335 /* BackgroundLayer.m */; };
 		2E3C72311B0254CB003FD3F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C72301B0254CB003FD3F0 /* main.m */; };
 		2E3C72341B0254CB003FD3F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C72331B0254CB003FD3F0 /* AppDelegate.m */; };
 		2E3C72371B0254CB003FD3F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C72361B0254CB003FD3F0 /* ViewController.m */; };
@@ -81,6 +82,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E36CCAE1B05304900B55335 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
+		2E36CCAF1B05304900B55335 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 		2E3C722B1B0254CB003FD3F0 /* Sunset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3C722F1B0254CB003FD3F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E3C72301B0254CB003FD3F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				2E3C72331B0254CB003FD3F0 /* AppDelegate.m */,
 				2E3C72351B0254CB003FD3F0 /* ViewController.h */,
 				2E3C72361B0254CB003FD3F0 /* ViewController.m */,
+				2E36CCAE1B05304900B55335 /* BackgroundLayer.h */,
+				2E36CCAF1B05304900B55335 /* BackgroundLayer.m */,
 				2E72CC291B03FDBA0082F991 /* KosherCocoa */,
 				2E3C72381B0254CB003FD3F0 /* Main.storyboard */,
 				2E3C723B1B0254CB003FD3F0 /* Images.xcassets */,
@@ -926,6 +931,7 @@
 				2E72CC971B03FDBB0082F991 /* KCGeoLocation.m in Sources */,
 				2E72CC831B03FDBB0082F991 /* NSCalendar+Juncture.m in Sources */,
 				2E72CC8D1B03FDBB0082F991 /* KCDafYomiCalculator.m in Sources */,
+				2E36CCB01B05304900B55335 /* BackgroundLayer.m in Sources */,
 				2E72CC8B1B03FDBB0082F991 /* KCJewishHoliday.m in Sources */,
 				2E72CC8F1B03FDBB0082F991 /* KCParashatHashavuaCalculator.m in Sources */,
 				2E72CC951B03FDBB0082F991 /* KCAstronomicalCalculator.m in Sources */,

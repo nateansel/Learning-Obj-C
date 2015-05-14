@@ -37,21 +37,49 @@
   double secondsInAMinute = 60;
   double hoursBetweenDates = timeBetweenDates / secondsInAnHour;
   double minutesBetweenDates = timeBetweenDates / secondsInAMinute;
-  UIColor *orangeColor = [UIColor colorWithRed:0.894 green:0.41 blue:0.041 alpha:1];
-  UIColor *blueColor = [UIColor colorWithRed:0.007 green:0.564 blue:1 alpha:1];
+  
+  // UIColor *orangeColor = [UIColor colorWithRed:0.894 green:0.41 blue:0.041 alpha:1];
+  // UIColor *blueColor = [UIColor colorWithRed:0.007 green:0.564 blue:1 alpha:1];
+  
+//  CAGradientLayer *currentLayer;
+//  currentLayer = [CAGradientLayer layer];
+//  currentLayer.frame = self.view.bounds;
+//  [self.view.layer insertSublayer:currentLayer atIndex:0];
+  
   if (hoursBetweenDates < 1.0 && hoursBetweenDates > 0.0) {
-    self.view.backgroundColor = orangeColor;
-    timeUntil.text = [NSString stringWithFormat:@"%.1f minutes until the sun sets", minutesBetweenDates];
+    // Gradient
+    orangeGradientLayer.hidden = false;
+    blueGradientLayer.hidden = true;
+    //
+    timeUntil.text = [NSString stringWithFormat:@"%.1f minutes of daylight left", minutesBetweenDates];
   }
   else if (hoursBetweenDates > 1.0) {
-    self.view.backgroundColor = orangeColor;
-    timeUntil.text = [NSString stringWithFormat:@"%.1f hours until the sun sets", hoursBetweenDates];
+    // Gradient
+    orangeGradientLayer.hidden = false;
+    blueGradientLayer.hidden = true;
+    //
+    timeUntil.text = [NSString stringWithFormat:@"%.1f hours of daylight left", hoursBetweenDates];
   }
   else {
-    self.view.backgroundColor = blueColor;
+    // Gradient
+    orangeGradientLayer.hidden = true;
+    blueGradientLayer.hidden = false;
+    //
     timeUntil.text = [NSString stringWithFormat:@"The sun has set"];
     NSLog(@"%.5f\n", minutesBetweenDates);
   }
+}
+
+- (void)setupGradients {
+  orangeGradientLayer = [BackgroundLayer orangeGradient];
+  blueGradientLayer = [BackgroundLayer blueGradient];
+  orangeGradientLayer.frame = self.view.bounds;
+  blueGradientLayer.frame = self.view.bounds;
+  [self.view.layer insertSublayer:orangeGradientLayer atIndex:0];
+  [self.view.layer insertSublayer:blueGradientLayer atIndex:1];
+  
+  blueGradientLayer.hidden = true;
+  orangeGradientLayer.hidden = false;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -91,6 +119,7 @@
   locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
   locationManager.distanceFilter = 500; // meters
   [locationManager requestWhenInUseAuthorization];
+  [self setupGradients];
   [locationManager startUpdatingLocation];
 }
 

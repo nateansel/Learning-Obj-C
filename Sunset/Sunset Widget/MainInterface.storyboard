@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="20" y="8" width="280" height="39"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                <rect key="frame" x="16" y="20" width="198" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="8qd-O1-Xg5"/>
                                 </constraints>
@@ -26,21 +26,21 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ftT-Bm-AIj">
-                                <rect key="frame" x="20" y="55" width="280" height="39"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ftT-Bm-AIj">
+                                <rect key="frame" x="16" y="67" width="198" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ftT-Bm-AIj" secondAttribute="trailing" constant="4" id="G8a-8w-SvQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ftT-Bm-AIj" secondAttribute="trailing" constant="90" id="G8a-8w-SvQ"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="ftT-Bm-AIj" secondAttribute="leading" id="PFM-T7-XLc"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="ftT-Bm-AIj" secondAttribute="bottom" constant="56" id="Snu-54-DNp"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" symbolic="YES" id="Wa8-kL-XIt"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="ftT-Bm-AIj" secondAttribute="bottom" constant="44" id="Snu-54-DNp"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="Wa8-kL-XIt"/>
                             <constraint firstItem="ftT-Bm-AIj" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" symbolic="YES" id="poK-Ye-s9u"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="trailing" secondItem="ftT-Bm-AIj" secondAttribute="trailing" id="uIN-cE-rs4"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="4" id="vLQ-e2-79d"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="vLQ-e2-79d"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
