@@ -45,6 +45,8 @@
     longLabel.text = [NSString stringWithFormat:@"Long: %+.2f", location.coordinate.longitude];
   }
   [locationManager stopUpdatingLocation];
+  NSString *time = [myDefaults objectForKey:@"date"];
+  timeLabel.text = time;
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -55,6 +57,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  
+  myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
   
   locationManager = [[CLLocationManager alloc] init];
   locationManager.delegate = self;

@@ -19,6 +19,7 @@
   __weak IBOutlet UIButton *roundedButton;
   NSDate *sunrise;
   NSDate *sunset;
+  NSUserDefaults *myDefaults;
   CLLocationManager *locationManager;
   CLLocation* location;
   CALayer* orangeGradientLayer;

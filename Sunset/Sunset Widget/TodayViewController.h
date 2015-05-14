@@ -13,8 +13,10 @@
 @interface TodayViewController : UIViewController <CLLocationManagerDelegate> {
   IBOutlet UILabel *latLabel;
   IBOutlet UILabel *longLabel;
+  IBOutlet UILabel *timeLabel;
   NSDate *sunrise;
   NSDate *sunset;
+  NSUserDefaults *myDefaults;
   CLLocationManager *locationManager;
   CLLocation* location;
 }

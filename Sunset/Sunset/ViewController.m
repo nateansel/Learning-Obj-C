@@ -28,6 +28,8 @@
   NSDateFormatter *datFormatter = [[NSDateFormatter alloc] init];
   [datFormatter setDateFormat:@"h:mm a"];
   timeLabel.text = [datFormatter stringFromDate:sunset];
+  [myDefaults setObject:[datFormatter stringFromDate:sunset] forKey:@"date"];
+  [myDefaults synchronize];
 }
 
 - (void)getTimeUntilSunset {
@@ -113,6 +115,8 @@
   CALayer *btnLayer = [roundedButton layer];
   [btnLayer setMasksToBounds:YES];
   [btnLayer setCornerRadius:5.0f];
+  
+  myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
   
   locationManager = [[CLLocationManager alloc] init];
   locationManager.delegate = self;

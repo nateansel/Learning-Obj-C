@@ -84,6 +84,8 @@
 /* Begin PBXFileReference section */
 		2E36CCAE1B05304900B55335 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		2E36CCAF1B05304900B55335 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		2E36CCB11B05467900B55335 /* Sunset Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sunset Widget.entitlements"; sourceTree = "<group>"; };
+		2E36CCB21B0546C400B55335 /* Sunset.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sunset.entitlements; sourceTree = "<group>"; };
 		2E3C722B1B0254CB003FD3F0 /* Sunset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3C722F1B0254CB003FD3F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E3C72301B0254CB003FD3F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		2E3C722D1B0254CB003FD3F0 /* Sunset */ = {
 			isa = PBXGroup;
 			children = (
+				2E36CCB21B0546C400B55335 /* Sunset.entitlements */,
 				2E3C72321B0254CB003FD3F0 /* AppDelegate.h */,
 				2E3C72331B0254CB003FD3F0 /* AppDelegate.m */,
 				2E3C72351B0254CB003FD3F0 /* ViewController.h */,
@@ -554,6 +557,7 @@
 		2EE61F921B0430BE002FC960 /* Sunset Widget */ = {
 			isa = PBXGroup;
 			children = (
+				2E36CCB11B05467900B55335 /* Sunset Widget.entitlements */,
 				2EE61F951B0430BE002FC960 /* TodayViewController.h */,
 				2EE61F961B0430BE002FC960 /* TodayViewController.m */,
 				2EE61F981B0430BE002FC960 /* MainInterface.storyboard */,
@@ -843,6 +847,12 @@
 				TargetAttributes = {
 					2E3C722A1B0254CB003FD3F0 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = UCUX5A4U9R;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					2E3C72431B0254CB003FD3F0 = {
 						CreatedOnToolsVersion = 6.2;
@@ -850,6 +860,12 @@
 					};
 					2EE61F8D1B0430BE002FC960 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = UCUX5A4U9R;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1072,10 +1088,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sunset/Sunset.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -1085,10 +1105,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sunset/Sunset.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Sunset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -1131,6 +1155,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Sunset Widget/Sunset Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1141,6 +1168,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1149,12 +1177,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Sunset Widget/Sunset Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Sunset Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

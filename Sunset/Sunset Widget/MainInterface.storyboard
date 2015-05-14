@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
@@ -32,15 +32,27 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-4i-D8e">
+                                <rect key="frame" x="16" y="114" width="198" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="KtV-M0-Hka"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ftT-Bm-AIj" secondAttribute="trailing" constant="90" id="G8a-8w-SvQ"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="ftT-Bm-AIj" secondAttribute="leading" id="PFM-T7-XLc"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="ftT-Bm-AIj" secondAttribute="bottom" constant="44" id="Snu-54-DNp"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="leading" id="0yn-hD-Zks"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="XeR-4i-D8e" secondAttribute="leading" id="Cow-Ig-dkb"/>
+                            <constraint firstItem="XeR-4i-D8e" firstAttribute="top" secondItem="ftT-Bm-AIj" secondAttribute="bottom" constant="8" symbolic="YES" id="FCe-25-oS4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ftT-Bm-AIj" secondAttribute="trailing" constant="90" id="JYH-6e-fob"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" symbolic="YES" id="RBb-kb-HjQ"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" id="Ull-wh-GES"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="Wa8-kL-XIt"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" symbolic="YES" id="poK-Ye-s9u"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="trailing" secondItem="ftT-Bm-AIj" secondAttribute="trailing" id="uIN-cE-rs4"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="vLQ-e2-79d"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="dp2-uP-xKb"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="XeR-4i-D8e" secondAttribute="bottom" constant="27" id="dw9-ao-ZDg"/>
+                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="trailing" secondItem="XeR-4i-D8e" secondAttribute="trailing" id="hQK-Zy-OiX"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -48,10 +60,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="150"/>
+                    <size key="freeformSize" width="320" height="180"/>
                     <connections>
                         <outlet property="latLabel" destination="GcN-lo-r42" id="mw3-Zb-kXl"/>
                         <outlet property="longLabel" destination="ftT-Bm-AIj" id="jKJ-OC-50F"/>
+                        <outlet property="timeLabel" destination="XeR-4i-D8e" id="oXE-gH-cye"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
