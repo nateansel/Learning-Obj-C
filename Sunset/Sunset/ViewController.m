@@ -34,8 +34,19 @@
   NSDate *currentTime = [NSDate date];
   NSTimeInterval timeBetweenDates = [sunset timeIntervalSinceDate:currentTime];
   double secondsInAnHour = 3600;
+  double secondsInAMinute = 60;
   double hoursBetweenDates = timeBetweenDates / secondsInAnHour;
-  timeUntil.text = [NSString stringWithFormat:@"%.1f hours until the sun sets", hoursBetweenDates];
+  double minutesBetweenDates = timeBetweenDates / secondsInAMinute;
+  if (hoursBetweenDates < 1.0 && hoursBetweenDates > 0.0) {
+    timeUntil.text = [NSString stringWithFormat:@"%.1f minutes until the sun sets", minutesBetweenDates];
+  }
+  else if (hoursBetweenDates > 1.0) {
+    timeUntil.text = [NSString stringWithFormat:@"%.1f hours until the sun sets", hoursBetweenDates];
+  }
+  else {
+    timeUntil.text = [NSString stringWithFormat:@"? hours until the sun sets"];
+    NSLog("%.5f\n", minutesBetweenDates);
+  }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
