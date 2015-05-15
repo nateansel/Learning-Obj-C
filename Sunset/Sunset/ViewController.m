@@ -175,6 +175,9 @@
   
   // This initializes the myDefaults dictionary. This can be done elsewhere, but
   // it has to be initialized this way.
+  if (sunEventObject == NULL) {
+    sunEventObject = [[SunEvent alloc] init];
+  }
   myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
   
   [self setupGradients];

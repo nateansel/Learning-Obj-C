@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "KosherCocoa.h"
 #import "BackgroundLayer.h"
+#import "SunEvent.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate> {
   // Is the sun set?
@@ -46,6 +47,10 @@
   // These layers hold the pretty gradienrs
   CALayer* orangeGradientLayer;
   CALayer* blueGradientLayer;
+  
+  // SunEvent object that contains all the code for calculating sunset/sunrise
+  // times as well as the location of the device
+  SunEvent *sunEventObject;
 }
 
 // This method refreshes when the button us pressed
