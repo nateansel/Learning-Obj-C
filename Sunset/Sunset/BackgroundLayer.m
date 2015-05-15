@@ -39,7 +39,7 @@
 // Orange gradient background
 + (CAGradientLayer*) orangeGradient {
   
-  UIColor *colorOne = [UIColor colorWithRed:1 green:0.907 blue:0.048 alpha:1];
+  UIColor *colorOne = [UIColor colorWithRed:0.998 green:0.811 blue:0.058 alpha:1];
   UIColor *colorTwo = [UIColor colorWithRed:0.965 green:0.35 blue:0 alpha:1];
   
   NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];

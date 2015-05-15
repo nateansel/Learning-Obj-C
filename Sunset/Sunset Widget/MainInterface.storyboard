@@ -14,45 +14,45 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="16" y="20" width="198" height="39"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-4i-D8e">
+                                <rect key="frame" x="72" y="37" width="176" height="53"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the sun has set" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="xtO-FR-Sx1">
+                                <rect key="frame" x="65" y="98" width="191" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="8qd-O1-Xg5"/>
+                                    <constraint firstAttribute="height" constant="27" id="lgk-VE-eB0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ftT-Bm-AIj">
-                                <rect key="frame" x="16" y="67" width="198" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-4i-D8e">
-                                <rect key="frame" x="16" y="114" width="198" height="39"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the sun will set at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="SG8-qT-qwk">
+                                <rect key="frame" x="86" y="14" width="149" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="KtV-M0-Hka"/>
+                                    <constraint firstAttribute="height" constant="21" id="PRh-eB-NVI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="leading" id="0yn-hD-Zks"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="XeR-4i-D8e" secondAttribute="leading" id="Cow-Ig-dkb"/>
-                            <constraint firstItem="XeR-4i-D8e" firstAttribute="top" secondItem="ftT-Bm-AIj" secondAttribute="bottom" constant="8" symbolic="YES" id="FCe-25-oS4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ftT-Bm-AIj" secondAttribute="trailing" constant="90" id="JYH-6e-fob"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" symbolic="YES" id="RBb-kb-HjQ"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" id="Ull-wh-GES"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="Wa8-kL-XIt"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="dp2-uP-xKb"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="XeR-4i-D8e" secondAttribute="bottom" constant="27" id="dw9-ao-ZDg"/>
-                            <constraint firstItem="ftT-Bm-AIj" firstAttribute="trailing" secondItem="XeR-4i-D8e" secondAttribute="trailing" id="hQK-Zy-OiX"/>
+                            <constraint firstItem="SG8-qT-qwk" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="70" id="5Qy-Cp-5Vq"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="top" secondItem="XeR-4i-D8e" secondAttribute="bottom" constant="8" symbolic="YES" id="AWE-Ho-Z3F"/>
+                            <constraint firstItem="SG8-qT-qwk" firstAttribute="centerX" secondItem="XeR-4i-D8e" secondAttribute="centerX" id="BfO-8O-TPH"/>
+                            <constraint firstItem="SG8-qT-qwk" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="14" id="Cch-gO-N8Q"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="xtO-FR-Sx1" secondAttribute="bottom" constant="15" id="QUf-4n-kbl"/>
+                            <constraint firstItem="XeR-4i-D8e" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="56" id="ZN7-sF-ZKy"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="dQH-cn-ilP"/>
+                            <constraint firstItem="XeR-4i-D8e" firstAttribute="centerX" secondItem="xtO-FR-Sx1" secondAttribute="centerX" id="dnu-bn-9lJ"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="49" id="qHd-Ne-4do"/>
+                            <constraint firstItem="XeR-4i-D8e" firstAttribute="top" secondItem="SG8-qT-qwk" secondAttribute="bottom" constant="2" id="wZi-Bu-flJ"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -60,11 +60,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="180"/>
+                    <size key="freeformSize" width="320" height="140"/>
                     <connections>
-                        <outlet property="latLabel" destination="GcN-lo-r42" id="mw3-Zb-kXl"/>
-                        <outlet property="longLabel" destination="ftT-Bm-AIj" id="jKJ-OC-50F"/>
+                        <outlet property="countdown" destination="xtO-FR-Sx1" id="0Uy-dJ-D1W"/>
                         <outlet property="timeLabel" destination="XeR-4i-D8e" id="oXE-gH-cye"/>
+                        <outlet property="willSet" destination="SG8-qT-qwk" id="Hdh-Yd-Suz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,21 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-// #import "KosherCocoa.h"
 
-@interface TodayViewController : UIViewController <CLLocationManagerDelegate> {
-  IBOutlet UILabel *latLabel;
-  IBOutlet UILabel *longLabel;
+@interface TodayViewController : UIViewController  {
+  IBOutlet UILabel *willSet;
   IBOutlet UILabel *timeLabel;
+  IBOutlet UILabel *countdown;
   NSDate *sunrise;
   NSDate *sunset;
   NSUserDefaults *myDefaults;
-  CLLocationManager *locationManager;
-  CLLocation* location;
 }
 
-// - (void)getTimeOfSunset;
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations;
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets;
+
 @end

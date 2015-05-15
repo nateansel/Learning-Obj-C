@@ -28,6 +28,7 @@
   NSDateFormatter *datFormatter = [[NSDateFormatter alloc] init];
   [datFormatter setDateFormat:@"h:mm a"];
   timeLabel.text = [datFormatter stringFromDate:sunset];
+  
   [myDefaults setObject:[datFormatter stringFromDate:sunset] forKey:@"date"];
   [myDefaults synchronize];
 }
@@ -49,26 +50,49 @@
 //  [self.view.layer insertSublayer:currentLayer atIndex:0];
   
   if (hoursBetweenDates < 1.0 && hoursBetweenDates > 0.0) {
+    isSet = NO;
     // Gradient
     orangeGradientLayer.hidden = false;
     blueGradientLayer.hidden = true;
     //
-    timeUntil.text = [NSString stringWithFormat:@"%.1f minutes of daylight left", minutesBetweenDates];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    timeUntil.text = [NSString stringWithFormat:@"%.0f minutes of daylight left", minutesBetweenDates];
+    willSet.text = @"the sun will set at";
+    
+    [myDefaults setObject:@"NO" forKey:@"isSet"];
+    [myDefaults setObject:@"NO" forKey:@"inHours"];
+    [myDefaults setObject:@"YES" forKey:@"inMinutes"];
+    [myDefaults setObject:[NSString stringWithFormat:@"%.0f", minutesBetweenDates] forKey:@"minutes"];
+    [myDefaults synchronize];
   }
   else if (hoursBetweenDates > 1.0) {
+    isSet = NO;
     // Gradient
     orangeGradientLayer.hidden = false;
     blueGradientLayer.hidden = true;
     //
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     timeUntil.text = [NSString stringWithFormat:@"%.1f hours of daylight left", hoursBetweenDates];
+    willSet.text = @"the sun will set at";
+    
+    [myDefaults setObject:@"NO" forKey:@"isSet"];
+    [myDefaults setObject:@"YES" forKey:@"inHours"];
+    [myDefaults setObject:@"No" forKey:@"inMinutes"];
+    [myDefaults setObject:[NSString stringWithFormat:@"%.1f", hoursBetweenDates] forKey:@"hours"];
+    [myDefaults synchronize];
   }
   else {
+    isSet = YES;
     // Gradient
     orangeGradientLayer.hidden = true;
     blueGradientLayer.hidden = false;
     //
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     timeUntil.text = [NSString stringWithFormat:@"The sun has set"];
-    NSLog(@"%.5f\n", minutesBetweenDates);
+    willSet.text = @"the sun went down at";
+    
+    [myDefaults setObject:@"YES" forKey:@"isSet"];
+    [myDefaults synchronize];
   }
 }
 
@@ -108,6 +132,25 @@
   NSLog(@"Error: %@",error.description);
 }
 
+-(void) refresh {
+  locationManager = [[CLLocationManager alloc] init];
+  locationManager.delegate = self;
+  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+  locationManager.distanceFilter = 500; // meters
+  [locationManager requestAlwaysAuthorization];
+  [locationManager startUpdatingLocation];
+}
+
+-(void)stopLocation {
+  [locationManager stopUpdatingLocation];
+}
+
+-(void)fetchNewDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  [self refresh];
+  [self stopLocation];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
@@ -118,13 +161,8 @@
   
   myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
   
-  locationManager = [[CLLocationManager alloc] init];
-  locationManager.delegate = self;
-  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-  locationManager.distanceFilter = 500; // meters
-  [locationManager requestWhenInUseAuthorization];
   [self setupGradients];
-  [locationManager startUpdatingLocation];
+  [self refresh];
 }
 
 - (void)didReceiveMemoryWarning {

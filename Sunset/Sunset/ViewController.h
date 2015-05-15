@@ -12,10 +12,12 @@
 #import "BackgroundLayer.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate> {
+  BOOL isSet;
   IBOutlet UILabel *latLabel;
   IBOutlet UILabel *longLabel;
   IBOutlet UILabel *timeLabel;
   IBOutlet UILabel *timeUntil;
+  IBOutlet UILabel *willSet;
   __weak IBOutlet UIButton *roundedButton;
   NSDate *sunrise;
   NSDate *sunset;
@@ -27,14 +29,16 @@
 }
 
 - (IBAction)getLocation:(id)sender;
+- (void)refresh;
+-(void)stopLocation;
 - (void)getTimeOfSunset;
 - (void)getTimeUntilSunset;
 - (void)setupGradients;
-- (CAGradientLayer*) blueGradient;
-- (CAGradientLayer*) orangeGradient;
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations;
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+-(void)fetchNewDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+
 
 @end
 

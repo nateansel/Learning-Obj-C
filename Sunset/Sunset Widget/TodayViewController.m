@@ -15,58 +15,16 @@
 
 @implementation TodayViewController
 
-//- (void)getTimeOfSunset {
-//  KCGeoLocation *currentLocation = [[KCGeoLocation alloc] initWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude andTimeZone:[NSTimeZone systemTimeZone]];
-//  
-//  KCAstronomicalCalendar *calendar = [[KCAstronomicalCalendar alloc] initWithLocation:currentLocation];
-//  
-//  // This was declared as an instance variable, but never allocated and inited
-//  // does it need to be?
-//  sunset = [calendar sunset];
-//  NSDateFormatter *datFormatter = [[NSDateFormatter alloc] init];
-//  [datFormatter setDateFormat:@"h:mm a"];
-//  timeLabel.text = [datFormatter stringFromDate:sunset];
-//}
-
-
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
-  // If it's a relatively recent event, turn off updates to save power.
-  location = [locations lastObject];
-  NSDate* eventDate = location.timestamp;
-  NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-  if (fabs(howRecent) < 15.0) {
-    // If the event is recent, do something with it.
-    NSLog(@"latitude %+.6f, longitude %+.6f\n",
-          location.coordinate.latitude,
-          location.coordinate.longitude);
-    // [self getTimeOfSunset];
-    latLabel.text = [NSString stringWithFormat:@"Lat: %+.2f", location.coordinate.latitude];
-    longLabel.text = [NSString stringWithFormat:@"Long: %+.2f", location.coordinate.longitude];
-  }
-  [locationManager stopUpdatingLocation];
-  NSString *time = [myDefaults objectForKey:@"date"];
-  timeLabel.text = time;
+- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets
+{
+  return UIEdgeInsetsZero;
 }
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"Error: %@",error.description);
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
   
-  myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
-  
-  locationManager = [[CLLocationManager alloc] init];
-  locationManager.delegate = self;
-  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-  locationManager.distanceFilter = 500; // meters
-  [locationManager requestWhenInUseAuthorization];
-  [locationManager startUpdatingLocation];
-  
+    myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,6 +38,26 @@
     // If an error is encountered, use NCUpdateResultFailed
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
+  
+  timeLabel.text = [myDefaults objectForKey:@"date"];
+  
+  bool isSet = [[myDefaults objectForKey:@"isSet"] boolValue];
+  bool inHours = [[myDefaults objectForKey:@"inHours"] boolValue];
+  bool inMinutes = [[myDefaults objectForKey:@"inMinutes"] boolValue];
+  
+  if (isSet) {
+    willSet.text = @"the sun went down at";
+    [countdown setHidden:YES];
+  }
+  else {
+    willSet.text = @"the sun will set at";
+    if (inHours) {
+      countdown.text = [NSString stringWithFormat:@"%@ hours of daylight left", [myDefaults objectForKey:@"hours"]];
+    }
+    else if (inMinutes) {
+      countdown.text = [NSString stringWithFormat:@"%@ minutes of daylight left", [myDefaults objectForKey:@"minutes"]];
+    }
+  }
 
     completionHandler(NCUpdateResultNewData);
 }
