@@ -26,20 +26,20 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwG-1Z-YP9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwG-1Z-YP9">
                                 <rect key="frame" x="209" y="454" width="183" height="53"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="183" id="Y8T-fl-jgx"/>
                                     <constraint firstAttribute="height" constant="53" id="jpK-t0-hj7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Refresh">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.013737553730607033" green="0.56361883878707886" blue="0.99944716691970825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="getLocation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1CJ-QD-lz1"/>
+                                    <action selector="getLocation:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Fxh-Bb-W6P"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4h-pk-06P">
@@ -119,7 +119,7 @@
                     <connections>
                         <outlet property="latLabel" destination="f7B-Kj-UcK" id="202-af-z24"/>
                         <outlet property="longLabel" destination="kfx-w3-aRC" id="4UK-3m-IrX"/>
-                        <outlet property="roundedButton" destination="PwG-1Z-YP9" id="ZVK-3W-Xft"/>
+                        <outlet property="roundedButton" destination="PwG-1Z-YP9" id="ntr-lj-WSL"/>
                         <outlet property="timeLabel" destination="T4h-pk-06P" id="Kug-Us-jf8"/>
                         <outlet property="timeUntil" destination="Dfx-TC-eTy" id="yQj-vy-3sI"/>
                         <outlet property="willSet" destination="uq7-2P-jnL" id="Osc-fa-rdf"/>

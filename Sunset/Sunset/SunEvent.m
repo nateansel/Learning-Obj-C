@@ -12,19 +12,29 @@
 @implementation SunEvent
 
 - (SunEvent*)init {
+  // Always initialize the superclass
+  self =  [super init];
   myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
+  if (data == nil) {
+    data = [[NSMutableDictionary alloc] init];
+  }
   [self updateLocation];
+  [self updateCalendar];
   return self;
 }
 
 - (void)locationManager:(CLLocationManager*) manager
         didUpdateLocations:(NSArray *)locations{
   currentLocation = [locations lastObject];
-  if (fabs([currentLocation.timestamp timeIntervalSinceNow]) < 15.0) {
-    currentGeoLocation = [[KCGeoLocation alloc] initWithLatitude:currentLocation.coordinate.latitude
-                                                andLongitude:currentLocation.coordinate.longitude
-                                                andTimeZone:[NSTimeZone systemTimeZone]];
-    astronomicalCalendar = [[KCAstronomicalCalendar alloc] initWithLocation:currentGeoLocation];
+  NSDate* eventDate = currentLocation.timestamp;
+  NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+  [self updateCalendar];
+  [self updateDictionary];
+  
+  if (fabs(howRecent) < 15.0) {
+    // Stuff I put in init used to be here
+    NSLog([NSString stringWithFormat:@"Lat: %+.6f", currentLocation.coordinate.latitude]);
+    NSLog([NSString stringWithFormat:@"Long: %+.5f", currentLocation.coordinate.longitude]);
   }
 }
 
@@ -40,6 +50,17 @@
   NSLog(@"Error: %@",error.description);
 }
 
+- (void)updateCalendar {
+  // Had to put this stuff here because calendar was coming up nil in the old location
+  location = [[KCGeoLocation alloc] initWithLatitude:currentLocation.coordinate.latitude
+                                        andLongitude:currentLocation.coordinate.longitude
+                                         andTimeZone:[NSTimeZone systemTimeZone]];
+  calendar = [[KCAstronomicalCalendar alloc] initWithLocation:location];
+  sunrise = [calendar sunrise];
+  sunset = [calendar sunset];
+
+}
+
 - (void)updateLocation {
   locationManager = [[CLLocationManager alloc] init];
   locationManager.delegate = self;
@@ -49,19 +70,26 @@
   [locationManager startUpdatingLocation];
 }
 
+- (void)stopUpdatingLocation {
+  [locationManager stopUpdatingLocation];
+}
+
 - (NSDate*)getTodaySunsetDate {
-  [astronomicalCalendar setWorkingDate:[NSDate date]];
-  return [astronomicalCalendar sunset];
+  [calendar setWorkingDate:[NSDate date]];
+  sunset = [calendar sunset];
+  return sunset;
 }
 
 - (NSDate*)getTodaySunriseDate {
-  [astronomicalCalendar setWorkingDate:[NSDate date]];
-  return [astronomicalCalendar sunrise];
+  [calendar setWorkingDate:[NSDate date]];
+  sunrise = [calendar sunrise];
+  return sunrise;
 }
 
 - (NSDate*)getTomorrowSunriseDate {
-  [astronomicalCalendar setWorkingDate:[NSDate dateWithTimeIntervalSinceNow:86400]];
-  return [astronomicalCalendar sunset];
+  [calendar setWorkingDate:[NSDate dateWithTimeIntervalSinceNow:86400]];
+  sunset = [calendar sunset];
+  return sunset;
 }
 
 - (NSString*)getRiseOrSetTimeString {
@@ -70,17 +98,17 @@
   
   if (![self hasSunRisenToday]) {
     // the sun hasn't risen today
-    return [NSString stringWithFormat:@"The sun will rise at %@",
+    return [NSString stringWithFormat:@"%@",
             [dateFormatter stringFromDate:[self getTodaySunriseDate]]];
     
   } else if (![self hasSunSetToday]) {
     // the sun has not set today
-    return [NSString stringWithFormat:@"The sun will set at %@",
+    return [NSString stringWithFormat:@"%@",
             [dateFormatter stringFromDate:[self getTodaySunsetDate]]];
     
   } else {
     // the sun has already set today
-    return [NSString stringWithFormat:@"The sun will rise at %@",
+    return [NSString stringWithFormat:@"%@",
             [dateFormatter stringFromDate:[self getTomorrowSunriseDate]]];
   }
 }
@@ -88,12 +116,13 @@
 - (NSString*)getTimeLeftString: (NSDate*) date {
   // declare some variables
   double tempTimeNum;
-  int hours, minutes;
+  int hours, minutes, totalMinutes;
   NSString *minuteString, *riseOrSet;
   
   tempTimeNum = [date timeIntervalSinceNow];  // the time difference between event and now in seconds
   hours = tempTimeNum / 3600;  // integer division with total seconds / seconds per hour
   minutes = (tempTimeNum - (hours * 3600)) / 60;  // integer division with the remaining seconds / seconds per minute
+  totalMinutes = tempTimeNum / 60;
   
   if (![self hasSunRisenToday] || [self hasSunSetToday]) {
     riseOrSet = @"until the sun rises";
@@ -101,7 +130,7 @@
     riseOrSet = @"of sunlight left";
   }
   
-  if (hours > 0) {
+  if (hours < 2) {
     if (minutes > 45) {
       minuteString = @"";
     } else if (minutes > 30) {
@@ -114,7 +143,9 @@
     
     return [NSString stringWithFormat:@"%d%@ hours %@.", hours, minuteString, riseOrSet];
   }
-  return [NSString stringWithFormat:@"%d minutes %@", minutes, riseOrSet];
+  
+  // ISSUE: need to report total minutes here, not minutes
+  return [NSString stringWithFormat:@"%d minutes %@", totalMinutes, riseOrSet];
 }
 
 - (BOOL)hasSunRisenToday {
@@ -133,28 +164,40 @@
   return currentLocation.coordinate.longitude;
 }
 
-- (void)updateDictionary {
+- (NSMutableDictionary*)updateDictionary {
   NSDate *tempDate;
   NSString *riseOrSet;
+  NSString *isSet;
   
   if (![self hasSunRisenToday]) {
     // the sun hasn't risen today
     tempDate = [self getTodaySunriseDate];
     riseOrSet = @"The sun will rise at";
+    isSet = @"YES";
   } else if (![self hasSunSetToday]) {
     // the sun has not set today
     tempDate = [self getTodaySunsetDate];
     riseOrSet = @"The sun will set at";
+    isSet = @"NO";
   } else {
     // the sun has set today
     tempDate = [self getTomorrowSunriseDate];
     riseOrSet = @"The sun will rise at";
+    isSet = @"YES";
   }
+  
+  [data setObject:[self getRiseOrSetTimeString] forKey:@"time"];
+  [data setObject:[self getTimeLeftString: tempDate] forKey:@"timeLeft"];
+  [data setObject:riseOrSet forKey:@"riseOrSet"];
+  [data setObject:isSet forKey:@"isSet"];
   
   [myDefaults setObject:[self getRiseOrSetTimeString] forKey:@"time"];
   [myDefaults setObject:[self getTimeLeftString: tempDate] forKey:@"timeLeft"];
   [myDefaults setObject:riseOrSet forKey:@"riseOrSet"];
+  [myDefaults setObject:isSet forKey:@"isSet"];
   [myDefaults synchronize];
+  
+  return data;
 }
 
 @end

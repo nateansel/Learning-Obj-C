@@ -16,10 +16,14 @@
 
 @interface SunEvent : NSObject <CLLocationManagerDelegate> {
   CLLocationManager *locationManager;
-  KCAstronomicalCalendar *astronomicalCalendar;
-  KCGeoLocation *currentGeoLocation;
+  KCAstronomicalCalendar *calendar;
+  KCGeoLocation *location;
   CLLocation *currentLocation;
   NSUserDefaults *myDefaults;
+  NSMutableDictionary *data;
+  
+  NSDate *sunrise;
+  NSDate *sunset;
 }
 
 - (SunEvent*)init;
@@ -27,7 +31,9 @@
         didUpdateLocations:(NSArray *)locations;
 - (void)locationManager:(CLLocationManager*)manager
         didFailWithError:(NSError *)error;
+- (void)updateCalendar;
 - (void)updateLocation;
+- (void)stopUpdatingLocation;
 - (NSDate*)getTodaySunsetDate;
 - (NSDate*)getTodaySunriseDate;
 - (NSDate*)getTomorrowSunriseDate;
@@ -37,7 +43,7 @@
 - (BOOL)hasSunSetToday;
 - (double)getLatitude;
 - (double)getLongitude;
-- (void)updateDictionary;
+- (NSMutableDictionary*)updateDictionary;
 
 @end
 

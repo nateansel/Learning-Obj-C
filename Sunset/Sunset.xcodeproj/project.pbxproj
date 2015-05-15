@@ -302,13 +302,13 @@
 		2E3C722D1B0254CB003FD3F0 /* Sunset */ = {
 			isa = PBXGroup;
 			children = (
-				D820909B1B06749400E0C359 /* SunEvent.h */,
-				D820909C1B0674DA00E0C359 /* SunEvent.m */,
 				2E36CCB21B0546C400B55335 /* Sunset.entitlements */,
 				2E3C72321B0254CB003FD3F0 /* AppDelegate.h */,
 				2E3C72331B0254CB003FD3F0 /* AppDelegate.m */,
 				2E3C72351B0254CB003FD3F0 /* ViewController.h */,
 				2E3C72361B0254CB003FD3F0 /* ViewController.m */,
+				D820909B1B06749400E0C359 /* SunEvent.h */,
+				D820909C1B0674DA00E0C359 /* SunEvent.m */,
 				2E36CCAE1B05304900B55335 /* BackgroundLayer.h */,
 				2E36CCAF1B05304900B55335 /* BackgroundLayer.m */,
 				2E3C72381B0254CB003FD3F0 /* Main.storyboard */,
