@@ -27,6 +27,7 @@
   sunset = [calendar sunset];
   NSDateFormatter *datFormatter = [[NSDateFormatter alloc] init];
   [datFormatter setDateFormat:@"h:mm a"];
+  
   timeLabel.text = [datFormatter stringFromDate:sunset];
   
   [myDefaults setObject:[datFormatter stringFromDate:sunset] forKey:@"date"];

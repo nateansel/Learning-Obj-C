@@ -30,7 +30,7 @@
 
 - (IBAction)getLocation:(id)sender;
 - (void)refresh;
--(void)stopLocation;
+- (void)stopLocation;
 - (void)getTimeOfSunset;
 - (void)getTimeUntilSunset;
 - (void)setupGradients;
