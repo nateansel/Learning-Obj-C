@@ -20,6 +20,7 @@
   // Override point for customization after application launch.
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+  
   return YES;
 }
 
@@ -46,6 +47,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
   // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+  
+  ViewController *viewController = (ViewController *)self.window.rootViewController;
+  [viewController refresh];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
