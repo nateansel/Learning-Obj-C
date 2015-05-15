@@ -40,7 +40,7 @@
 // Stops the location service
 - (void)stopLocation;
 
-- (void)updateView;
+- (void)updateView:(NSNotification *) notification;
 
 // Initialize the gradient layers
 - (void)setupGradients;

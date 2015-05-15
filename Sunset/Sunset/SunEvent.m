@@ -31,6 +31,8 @@
   [self updateCalendar];
   [self updateDictionary];
   
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
+  
   if (fabs(howRecent) < 15.0) {
     // Stuff I put in init used to be here
     NSLog([NSString stringWithFormat:@"Lat: %+.6f", currentLocation.coordinate.latitude]);
@@ -130,21 +132,23 @@
     riseOrSet = @"of sunlight left";
   }
   
-  if (hours < 2) {
-    if (minutes > 45) {
-      minuteString = @"";
-    } else if (minutes > 30) {
-      minuteString = @"¾";
-    } else if (minutes > 15) {
-      minuteString = @"½";
-    } else {
-      minuteString = @"¼";
-    }
-    
+  if (minutes > 45) {
+    minuteString = @"";
+  } else if (minutes > 30) {
+    minuteString = @"¾";
+  } else if (minutes > 15) {
+    minuteString = @"½";
+  } else if (minutes > 5 ){
+    minuteString = @"¼";
+  } else {
+    minuteString = @"";
+  }
+
+  
+  if (hours >= 1) {
     return [NSString stringWithFormat:@"%d%@ hours %@.", hours, minuteString, riseOrSet];
   }
   
-  // ISSUE: need to report total minutes here, not minutes
   return [NSString stringWithFormat:@"%d minutes %@", totalMinutes, riseOrSet];
 }
 

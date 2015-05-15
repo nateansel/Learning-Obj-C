@@ -15,7 +15,7 @@
   [self refresh];
 }
 
-- (void)updateView {
+- (void)updateView:(NSNotification *) notification {
   NSMutableDictionary *data = [sunEventObject updateDictionary];
   
   timeLabel.text = [data objectForKey:@"time"];
@@ -56,7 +56,7 @@
 -(void) refresh {
   [sunEventObject updateLocation];
   [sunEventObject updateDictionary];
-  [self updateView];
+  [self updateView:nil];
 }
 
 // I use this for cases when the app is closed or the background refresh ends
@@ -83,6 +83,8 @@
   [btnLayer setMasksToBounds:YES];
   [btnLayer setCornerRadius:5.0f];
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:) name:@"refreshView" object:nil];
+  
   if (sunEventObject == NULL) {
     sunEventObject = [[SunEvent alloc] init];
   }
@@ -92,7 +94,7 @@
   [self setupGradients];
   [self refresh];
   
-  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
+  // [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
