@@ -39,7 +39,7 @@
 
 - (void)getTimeUntilSunset {
   NSDate *currentTime = [NSDate date];
-    NSTimeInterval timeBetweenDates = [sunset timeIntervalSinceDate:currentTime];
+  NSTimeInterval timeBetweenDates = [sunset timeIntervalSinceDate:currentTime];
   double secondsInAnHour = 3600;
   double secondsInAMinute = 60;
   

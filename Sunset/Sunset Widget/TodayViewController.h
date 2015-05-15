@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 
 @interface TodayViewController : UIViewController  {
   IBOutlet UILabel *willSet;
