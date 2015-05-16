@@ -18,9 +18,6 @@
   IBOutlet UILabel *willSet;
   __weak IBOutlet UIButton *roundedButton;
   
-  NSDate *sunrise;
-  NSDate *sunset;
-  
   NSUserDefaults *myDefaults;
   
   CALayer* orangeGradientLayer;

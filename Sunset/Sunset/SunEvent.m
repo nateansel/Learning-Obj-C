@@ -11,6 +11,12 @@
 
 @implementation SunEvent
 
+/**
+ * Set up the instance of SunEvent, update the location and calendar.
+ * @author Nate
+ *
+ * @return A newly created SunEvent instance
+ */
 - (SunEvent*)init {
   // Always initialize the superclass
   self =  [super init];
@@ -31,36 +37,34 @@
   [self updateCalendar];
   [self updateDictionary];
   
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
-  
-  if (fabs(howRecent) < 15.0) {
-    // Stuff I put in init used to be here
-    NSLog([NSString stringWithFormat:@"Lat: %+.6f", currentLocation.coordinate.latitude]);
-    NSLog([NSString stringWithFormat:@"Long: %+.5f", currentLocation.coordinate.longitude]);
-  }
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView"
+                                        object:nil];
 }
 
 - (void)locationManager:(CLLocationManager*)manager
         didFailWithError:(NSError *)error {
-  UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error"
-                                                message:@"There was an error retrieving your location"
-                                                delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles: nil];
+  UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                 message:@"There was an error retrieving your location"
+                                                 delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles: nil];
   // Display error message as a popup alert
   [errorAlert show];
   NSLog(@"Error: %@",error.description);
 }
 
+/**
+ * Update the KCAstronomicalCalendar object.
+ * @author Nate
+ */
 - (void)updateCalendar {
   // Had to put this stuff here because calendar was coming up nil in the old location
   location = [[KCGeoLocation alloc] initWithLatitude:currentLocation.coordinate.latitude
-                                        andLongitude:currentLocation.coordinate.longitude
-                                         andTimeZone:[NSTimeZone systemTimeZone]];
+                                    andLongitude:currentLocation.coordinate.longitude
+                                    andTimeZone:[NSTimeZone systemTimeZone]];
   calendar = [[KCAstronomicalCalendar alloc] initWithLocation:location];
   sunrise = [calendar sunrise];
   sunset = [calendar sunset];
-
 }
 
 - (void)updateLocation {
@@ -76,25 +80,28 @@
   [locationManager stopUpdatingLocation];
 }
 
-- (NSDate*)getTodaySunsetDate {
+/**
+ * Retrieve a NSDate object of today's sunset.
+ * @author Nate
+ *
+ * @return A NSDate object of today's sunset
+ */
+- (NSDate *)getTodaySunsetDate {
   [calendar setWorkingDate:[NSDate date]];
-  sunset = [calendar sunset];
-  return sunset;
+  return [calendar sunset];
 }
 
-- (NSDate*)getTodaySunriseDate {
+- (NSDate *)getTodaySunriseDate {
   [calendar setWorkingDate:[NSDate date]];
-  sunrise = [calendar sunrise];
-  return sunrise;
+  return [calendar sunrise];
 }
 
-- (NSDate*)getTomorrowSunriseDate {
+- (NSDate *)getTomorrowSunriseDate {
   [calendar setWorkingDate:[NSDate dateWithTimeIntervalSinceNow:86400]];
-  sunset = [calendar sunset];
-  return sunset;
+  return [calendar sunrise];
 }
 
-- (NSString*)getRiseOrSetTimeString {
+- (NSString *)getRiseOrSetTimeString {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"h:mm a"];
   
@@ -115,16 +122,15 @@
   }
 }
 
-- (NSString*)getTimeLeftString: (NSDate*) date {
+- (NSString *)getTimeLeftString: (NSDate*) date {
   // declare some variables
   double tempTimeNum;
-  int hours, minutes, totalMinutes;
+  int hours, minutes;
   NSString *minuteString, *riseOrSet;
   
   tempTimeNum = [date timeIntervalSinceNow];  // the time difference between event and now in seconds
-  hours = tempTimeNum / 3600;  // integer division with total seconds / seconds per hour
+  hours = ((int) tempTimeNum) / 3600;  // integer division with total seconds / seconds per hour
   minutes = (tempTimeNum - (hours * 3600)) / 60;  // integer division with the remaining seconds / seconds per minute
-  totalMinutes = tempTimeNum / 60;
   
   if (![self hasSunRisenToday] || [self hasSunSetToday]) {
     riseOrSet = @"until the sun rises";
@@ -143,13 +149,15 @@
   } else {
     minuteString = @"";
   }
-
   
-  if (hours >= 1) {
+  if (hours > 0) {
+    if (hours == 1) {
+      return [NSString stringWithFormat:@"%d%@ hour %@.", hours, minuteString, riseOrSet];
+    }
     return [NSString stringWithFormat:@"%d%@ hours %@.", hours, minuteString, riseOrSet];
   }
   
-  return [NSString stringWithFormat:@"%d minutes %@", totalMinutes, riseOrSet];
+  return [NSString stringWithFormat:@"%d minutes %@", minutes, riseOrSet];
 }
 
 - (BOOL)hasSunRisenToday {

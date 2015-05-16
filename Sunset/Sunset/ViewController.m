@@ -30,8 +30,7 @@
     blueGradientLayer.hidden = false;
     // Set status bar to light color
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-  }
-  else {
+  } else {
     orangeGradientLayer.hidden = false;
     blueGradientLayer.hidden = true;
     // Set status bar to dark color
@@ -53,10 +52,10 @@
 }
 
 // Starts the locationManager with ALWAYS authorization
--(void) refresh {
+-(void)refresh {
   [sunEventObject updateLocation];
   [sunEventObject updateDictionary];
-  [self updateView:nil];
+  //[self updateView:nil];
 }
 
 // I use this for cases when the app is closed or the background refresh ends
@@ -85,7 +84,7 @@
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:) name:@"refreshView" object:nil];
   
-  if (sunEventObject == NULL) {
+  if (sunEventObject == nil) {
     sunEventObject = [[SunEvent alloc] init];
   }
   
