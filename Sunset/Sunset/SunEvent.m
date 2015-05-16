@@ -32,12 +32,6 @@
   [self updateDictionary];
   
   [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
-  
-  if (fabs(howRecent) < 15.0) {
-    // Stuff I put in init used to be here
-    NSLog([NSString stringWithFormat:@"Lat: %+.6f", currentLocation.coordinate.latitude]);
-    NSLog([NSString stringWithFormat:@"Long: %+.5f", currentLocation.coordinate.longitude]);
-  }
 }
 
 - (void)locationManager:(CLLocationManager*)manager
@@ -90,8 +84,8 @@
 
 - (NSDate*)getTomorrowSunriseDate {
   [calendar setWorkingDate:[NSDate dateWithTimeIntervalSinceNow:86400]];
-  sunset = [calendar sunset];
-  return sunset;
+  sunrise = [calendar sunrise];
+  return sunrise;
 }
 
 - (NSString*)getRiseOrSetTimeString {
