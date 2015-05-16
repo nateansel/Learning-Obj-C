@@ -55,7 +55,7 @@
 -(void)refresh {
   [sunEventObject updateLocation];
   [sunEventObject updateDictionary];
-  //[self updateView:nil];
+  // [self updateView:nil];
 }
 
 // I use this for cases when the app is closed or the background refresh ends

@@ -32,11 +32,9 @@
 - (void)locationManager:(CLLocationManager*) manager
         didUpdateLocations:(NSArray *)locations{
   currentLocation = [locations lastObject];
-  NSDate* eventDate = currentLocation.timestamp;
-  NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
   [self updateCalendar];
   [self updateDictionary];
-  
+
   [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView"
                                         object:nil];
 }

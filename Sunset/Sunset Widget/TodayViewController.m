@@ -39,26 +39,16 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
   
-  timeLabel.text = [myDefaults objectForKey:@"date"];
-  
   bool isSet = [[myDefaults objectForKey:@"isSet"] boolValue];
-  bool inHours = [[myDefaults objectForKey:@"inHours"] boolValue];
-  bool inMinutes = [[myDefaults objectForKey:@"inMinutes"] boolValue];
+  
+  timeLabel.text = [myDefaults objectForKey:@"time"];
+  willSet.text = [myDefaults objectForKey:@"riseOrSet"];
+  countdown.text = [myDefaults objectForKey:@"timeLeft"];
   
   if (isSet) {
-    willSet.text = @"the sun went down at";
-    [countdown setHidden:YES];
+    [countdown setHidden:NO];
   }
-  else {
-    willSet.text = @"the sun will set at";
-    if (inHours) {
-      countdown.text = [NSString stringWithFormat:@"%@ hours of daylight left", [myDefaults objectForKey:@"hours"]];
-    }
-    else if (inMinutes) {
-      countdown.text = [NSString stringWithFormat:@"%@ minutes of daylight left", [myDefaults objectForKey:@"minutes"]];
-    }
-  }
-
+  
     completionHandler(NCUpdateResultNewData);
 }
 
