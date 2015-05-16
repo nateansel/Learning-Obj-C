@@ -23,15 +23,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the sun has set" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="xtO-FR-Sx1">
-                                <rect key="frame" x="65" y="98" width="191" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="lgk-VE-eB0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the sun will set at" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="SG8-qT-qwk">
                                 <rect key="frame" x="86" y="14" width="149" height="21"/>
                                 <constraints>
@@ -41,17 +32,26 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the sun has set" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="xtO-FR-Sx1">
+                                <rect key="frame" x="45" y="98" width="231" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="yxd-xH-WuS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="SG8-qT-qwk" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="70" id="5Qy-Cp-5Vq"/>
-                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="top" secondItem="XeR-4i-D8e" secondAttribute="bottom" constant="8" symbolic="YES" id="AWE-Ho-Z3F"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="top" secondItem="XeR-4i-D8e" secondAttribute="bottom" constant="8" symbolic="YES" id="82t-9T-gAY"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="29" id="AwV-Cl-TZL"/>
                             <constraint firstItem="SG8-qT-qwk" firstAttribute="centerX" secondItem="XeR-4i-D8e" secondAttribute="centerX" id="BfO-8O-TPH"/>
                             <constraint firstItem="SG8-qT-qwk" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="14" id="Cch-gO-N8Q"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="xtO-FR-Sx1" secondAttribute="bottom" constant="15" id="QUf-4n-kbl"/>
                             <constraint firstItem="XeR-4i-D8e" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="56" id="ZN7-sF-ZKy"/>
-                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="dQH-cn-ilP"/>
-                            <constraint firstItem="XeR-4i-D8e" firstAttribute="centerX" secondItem="xtO-FR-Sx1" secondAttribute="centerX" id="dnu-bn-9lJ"/>
-                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="49" id="qHd-Ne-4do"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="jlh-SA-F22"/>
+                            <constraint firstItem="xtO-FR-Sx1" firstAttribute="centerX" secondItem="XeR-4i-D8e" secondAttribute="centerX" id="lZL-xY-ZBF"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="xtO-FR-Sx1" secondAttribute="bottom" constant="15" id="mlE-bs-Q3B"/>
                             <constraint firstItem="XeR-4i-D8e" firstAttribute="top" secondItem="SG8-qT-qwk" secondAttribute="bottom" constant="2" id="wZi-Bu-flJ"/>
                         </constraints>
                     </view>

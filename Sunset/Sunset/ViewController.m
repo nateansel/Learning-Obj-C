@@ -93,7 +93,7 @@
   [self setupGradients];
   [self refresh];
   
-  // [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateView) userInfo:nil repeats:YES];
+  [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
