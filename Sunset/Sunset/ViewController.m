@@ -69,6 +69,7 @@
 -(void)fetchNewDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
   [self refresh];
   [self stopLocation];
+  NSLog(@"BACKGROUND REFRESH\n");
   completionHandler(UIBackgroundFetchResultNewData);
 }
 
