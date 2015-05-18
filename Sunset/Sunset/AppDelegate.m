@@ -21,11 +21,21 @@
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
   
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+  }
+  
   return YES;
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
   ViewController *viewController = (ViewController *)self.window.rootViewController;
+  
+  UILocalNotification *notification = [[UILocalNotification alloc] init];
+  notification.fireDate = [NSDate dateWithTimeInterval:10 sinceDate:[NSDate date]];
+  notification.alertBody = @"Sunset just completed a background refresh.";
+  notification.soundName = UILocalNotificationDefaultSoundName;
+  [[UIApplication sharedApplication] scheduleLocalNotification:notification];
   
   [viewController fetchNewDataWithCompletionHandler:^(UIBackgroundFetchResult result) {
     completionHandler(result);
@@ -71,10 +81,12 @@
 
 - (void)setNotifications {
   ViewController *viewController = (ViewController *)self.window.rootViewController;
+  
   if ([viewController getNotificationSetting]) {
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.fireDate = [[viewController getNextSunEvent] dateByAddingTimeInterval:-3600];
     notification.alertBody = @"1 hour to next Sun event.";
+    notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
   }
 }
