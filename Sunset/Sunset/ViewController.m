@@ -38,6 +38,21 @@
   }
 }
 
+- (void)noLocationWarning {
+  noLocation.hidden = YES;
+  timeLabel.hidden = NO;
+  timeUntil.hidden = NO;
+  willSet.hidden = NO;
+}
+
+- (void)locationWarning {
+  noLocation.text = @"You need to enable location services in Settings for the app to work properly.";
+  noLocation.hidden = NO;
+  timeLabel.hidden = YES;
+  timeUntil.hidden = YES;
+  willSet.hidden = YES;
+}
+
 // Sets up the gradient layers
 - (void)setupGradients {
   orangeGradientLayer = [BackgroundLayer orangeGradient];
@@ -92,6 +107,9 @@
   [btnLayer setCornerRadius:5.0f];
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateView:) name:@"refreshView" object:nil];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noLocationWarning) name:@"location" object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationWarning) name:@"noLocation" object:nil];
   
   if (sunEventObject == nil) {
     sunEventObject = [[SunEvent alloc] init];

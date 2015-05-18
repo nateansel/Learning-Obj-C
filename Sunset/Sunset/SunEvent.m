@@ -76,14 +76,14 @@
   locationManager.distanceFilter = 500; // meters
   [locationManager requestAlwaysAuthorization];
   
-  // Display a message if the user denies location services
-  // This needs to be updated to show a message in the app, not in an alert
-  // The reason for this is because the alert will only show once when location is accessed,
-  // and we want it to show continuously while location services are disabled.
   if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted
       || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You need to grant permission for this app to use location services." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [errorAlert show];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"noLocation"
+                                                        object:nil];
+  }
+  else {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"location"
+                                                        object:nil];
   }
   
   [locationManager startUpdatingLocation];

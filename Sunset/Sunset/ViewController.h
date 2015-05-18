@@ -11,11 +11,10 @@
 #import "SunEvent.h"
 
 @interface ViewController : UIViewController {
-  IBOutlet UILabel *latLabel;
-  IBOutlet UILabel *longLabel;
   IBOutlet UILabel *timeLabel;
   IBOutlet UILabel *timeUntil;
   IBOutlet UILabel *willSet;
+  IBOutlet UILabel *noLocation;
   __weak IBOutlet UIButton *roundedButton;
   IBOutlet UISwitch *notificationSetting;
   
@@ -39,6 +38,9 @@
 - (void)stopLocation;
 
 - (void)updateView:(NSNotification *) notification;
+
+- (void)locationWarning;
+- (void)noLocationWarning;
 
 // Initialize the gradient layers
 - (void)setupGradients;
