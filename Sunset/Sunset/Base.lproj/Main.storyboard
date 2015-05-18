@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -80,6 +80,19 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pz-OA-a2j">
+                                <rect key="frame" x="209" y="530" width="111" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="HWQ-Px-8hC"/>
+                                    <constraint firstAttribute="width" constant="111" id="dEa-eq-l19"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqd-V6-2ez">
+                                <rect key="frame" x="343" y="530" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.92315423488616943" green="0.49462920427322388" blue="0.021579567342996597" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -93,9 +106,11 @@
                             <constraint firstItem="Dfx-TC-eTy" firstAttribute="top" secondItem="T4h-pk-06P" secondAttribute="bottom" constant="8" id="XCA-PG-G9q"/>
                             <constraint firstItem="kfx-w3-aRC" firstAttribute="top" secondItem="f7B-Kj-UcK" secondAttribute="bottom" constant="8" symbolic="YES" id="XkK-SX-q0f"/>
                             <constraint firstItem="uq7-2P-jnL" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="39" id="apn-aS-Lwu"/>
+                            <constraint firstItem="2pz-OA-a2j" firstAttribute="top" secondItem="PwG-1Z-YP9" secondAttribute="bottom" constant="23" id="bSW-Rb-iIC"/>
                             <constraint firstItem="f7B-Kj-UcK" firstAttribute="leading" secondItem="kfx-w3-aRC" secondAttribute="leading" id="bkQ-vG-2KB"/>
                             <constraint firstItem="uq7-2P-jnL" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="e7p-bn-t8y"/>
                             <constraint firstItem="T4h-pk-06P" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="42" id="eJl-5p-LdZ"/>
+                            <constraint firstItem="eqd-V6-2ez" firstAttribute="top" secondItem="PwG-1Z-YP9" secondAttribute="bottom" constant="23" id="f6H-y2-obN"/>
                             <constraint firstItem="f7B-Kj-UcK" firstAttribute="trailing" secondItem="kfx-w3-aRC" secondAttribute="trailing" id="ghM-Bh-q4M"/>
                             <constraint firstItem="kfx-w3-aRC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="l92-HC-2EF"/>
                             <constraint firstItem="Dfx-TC-eTy" firstAttribute="top" secondItem="uq7-2P-jnL" secondAttribute="bottom" constant="56" id="n3u-u0-pyg"/>
@@ -103,8 +118,10 @@
                             <constraint firstItem="uq7-2P-jnL" firstAttribute="trailing" secondItem="Dfx-TC-eTy" secondAttribute="trailing" id="o6g-Hm-7wr"/>
                             <constraint firstItem="Dfx-TC-eTy" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="o7d-PD-NEH"/>
                             <constraint firstItem="PwG-1Z-YP9" firstAttribute="centerX" secondItem="kfx-w3-aRC" secondAttribute="centerX" id="oDB-YN-Xhl"/>
+                            <constraint firstAttribute="centerX" secondItem="2pz-OA-a2j" secondAttribute="centerX" id="p85-7Y-Y4b"/>
                             <constraint firstItem="Dfx-TC-eTy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pIm-ix-Rtv"/>
                             <constraint firstItem="kfx-w3-aRC" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="pg3-44-aGs"/>
+                            <constraint firstItem="eqd-V6-2ez" firstAttribute="leading" secondItem="2pz-OA-a2j" secondAttribute="trailing" constant="23" id="qu9-CF-tjm"/>
                             <constraint firstItem="f7B-Kj-UcK" firstAttribute="top" secondItem="Dfx-TC-eTy" secondAttribute="bottom" constant="46" id="ufB-kv-jpr"/>
                         </constraints>
                         <variation key="default">
@@ -119,6 +136,7 @@
                     <connections>
                         <outlet property="latLabel" destination="f7B-Kj-UcK" id="202-af-z24"/>
                         <outlet property="longLabel" destination="kfx-w3-aRC" id="4UK-3m-IrX"/>
+                        <outlet property="notificationSetting" destination="eqd-V6-2ez" id="4d2-9L-cj3"/>
                         <outlet property="roundedButton" destination="PwG-1Z-YP9" id="ntr-lj-WSL"/>
                         <outlet property="timeLabel" destination="T4h-pk-06P" id="Kug-Us-jf8"/>
                         <outlet property="timeUntil" destination="Dfx-TC-eTy" id="yQj-vy-3sI"/>

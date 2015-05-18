@@ -63,10 +63,12 @@
                                     andLongitude:currentLocation.coordinate.longitude
                                     andTimeZone:[NSTimeZone systemTimeZone]];
   calendar = [[KCAstronomicalCalendar alloc] initWithLocation:location];
-  sunrise = [calendar sunrise];
-  sunset = [calendar sunset];
 }
 
+/**
+ * Updates the location via the locationManager.
+ * @author Nate
+ */
 - (void)updateLocation {
   locationManager = [[CLLocationManager alloc] init];
   locationManager.delegate = self;
@@ -87,6 +89,10 @@
   [locationManager startUpdatingLocation];
 }
 
+/**
+ * Tells the locaiton manager to stop updating the location.
+ * @author Nate
+ */
 - (void)stopUpdatingLocation {
   [locationManager stopUpdatingLocation];
 }
@@ -102,16 +108,34 @@
   return [calendar sunset];
 }
 
+/**
+ * Retrieve a NSDate object of today's sunrise.
+ * @author Nate
+ *
+ * @return A NSDate object of today's sunrise
+ */
 - (NSDate *)getTodaySunriseDate {
   [calendar setWorkingDate:[NSDate date]];
   return [calendar sunrise];
 }
 
+/**
+ * Retrieve a NSDate object of tomorrow's sunrise.
+ * @author Nate
+ *
+ * @return A NSDate object of tomorrow's sunrise
+ */
 - (NSDate *)getTomorrowSunriseDate {
   [calendar setWorkingDate:[NSDate dateWithTimeIntervalSinceNow:86400]];
   return [calendar sunrise];
 }
 
+/**
+ * Retreve the time that the sun will either rise or set at.
+ * @author Nate
+ *
+ * @return A string representation of the time the sun will rise or set in the "h:mm a" format
+ */
 - (NSString *)getRiseOrSetTimeString {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"h:mm a"];
@@ -133,6 +157,13 @@
   }
 }
 
+/**
+ * Creates and returns a string representation of the time left until the next sun event.
+ * @author Nate
+ *
+ * @param A date to compare to the current time/date
+ * @return A string representation of the difference in time between now and the date passed in
+ */
 - (NSString *)getTimeLeftString: (NSDate*) date {
   // declare some variables
   double tempTimeNum;
@@ -149,25 +180,37 @@
     riseOrSet = @"of sunlight left";
   }
   
+  // Determine how to display the minutes
   if (minutes > 45) {
+    // Increase the hour variable to compensate for not showing minutes
+    hours++;
     minuteString = @"";
   } else if (minutes > 30) {
     minuteString = @"¾";
   } else if (minutes > 15) {
     minuteString = @"½";
-  } else if (minutes > 5 ){
-    minuteString = @"¼";
   } else {
-    minuteString = @"";
+    minuteString = @"¼";
   }
   
+  // If more than 45 minutes left until the sunrise or sunset
   if (hours > 0) {
-    if (hours == 1) {
+    if (hours == 1 && minutes > 45) {
       return [NSString stringWithFormat:@"%d%@ hour %@.", hours, minuteString, riseOrSet];
     }
     return [NSString stringWithFormat:@"%d%@ hours %@.", hours, minuteString, riseOrSet];
   }
   
+  // If the sunrise or sunset is about to happen
+  if (minutes < 5) {
+    if (![self hasSunRisenToday] || [self hasSunSetToday]) {
+      riseOrSet = @"Sunrise is imminent";
+    } else {
+      riseOrSet = @"Sunset is imminent";
+    }
+  }
+  
+  // If there is less than an hour but more than 4 minutes left before the sunrise or sunset
   return [NSString stringWithFormat:@"%d minutes %@", minutes, riseOrSet];
 }
 
@@ -187,6 +230,12 @@
   return currentLocation.coordinate.longitude;
 }
 
+/**
+ * Creates a temporary dictionary with values pertaining to information about sunrise and sunset times.
+ * @author Nate
+ *
+ * @return A dictionary with time, timeLeft, riseOrSet, and isSet values
+ */
 - (NSMutableDictionary*)updateDictionary {
   NSDate *tempDate;
   NSString *riseOrSet;
@@ -221,6 +270,19 @@
   [myDefaults synchronize];
   
   return data;
+}
+
+- (NSDate *)getNextEvent {
+  if (![self hasSunRisenToday]) {
+    // the sun hasn't risen today
+    return [self getTodaySunriseDate];
+  } else if (![self hasSunSetToday]) {
+    // the sun has not set today
+    return [self getTodaySunsetDate];
+  } else {
+    // the sun has set today
+    return [self getTomorrowSunriseDate];
+  }
 }
 
 @end

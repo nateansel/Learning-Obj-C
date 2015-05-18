@@ -17,6 +17,7 @@
   IBOutlet UILabel *timeUntil;
   IBOutlet UILabel *willSet;
   __weak IBOutlet UIButton *roundedButton;
+  IBOutlet UISwitch *notificationSetting;
   
   NSUserDefaults *myDefaults;
   
@@ -43,8 +44,10 @@
 - (void)setupGradients;
 
 // This is for background updates
--(void)fetchNewDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+- (void)fetchNewDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
+- (BOOL)getNotificationSetting;
+- (NSDate *)getNextSunEvent;
 
 @end
 

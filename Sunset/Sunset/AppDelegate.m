@@ -42,6 +42,9 @@
   // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
   ViewController *viewController = (ViewController *)self.window.rootViewController;
   
+  // Set up local notification for the next sun event if the switch is on
+  [self setNotifications];
+  
   [viewController stopLocation];
 }
 
@@ -49,6 +52,9 @@
   // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
   
   ViewController *viewController = (ViewController *)self.window.rootViewController;
+  
+  [[UIApplication sharedApplication] cancelAllLocalNotifications];
+  
   [viewController refresh];
 }
 
@@ -58,6 +64,19 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+  
+  // Set up local notification for the next sun event if the switch is on
+  [self setNotifications];
+}
+
+- (void)setNotifications {
+  ViewController *viewController = (ViewController *)self.window.rootViewController;
+  if ([viewController getNotificationSetting]) {
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [[viewController getNextSunEvent] dateByAddingTimeInterval:-3600];
+    notification.alertBody = @"1 hour to next Sun event.";
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+  }
 }
 
 @end

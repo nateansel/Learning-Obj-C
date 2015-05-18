@@ -21,9 +21,6 @@
   CLLocation *currentLocation;
   NSUserDefaults *myDefaults;
   NSMutableDictionary *data;
-  
-  NSDate *sunrise;
-  NSDate *sunset;
 }
 
 - (SunEvent*)init;
@@ -44,6 +41,7 @@
 - (double)getLatitude;
 - (double)getLongitude;
 - (NSMutableDictionary*)updateDictionary;
+- (NSDate *)getNextEvent;
 
 @end
 
