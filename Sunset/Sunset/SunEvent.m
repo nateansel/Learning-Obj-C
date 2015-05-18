@@ -80,10 +80,12 @@
       || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"noLocation"
                                                         object:nil];
+    [data setValue:@"NO" forKey:@"updateColors"];
   }
   else {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"location"
                                                         object:nil];
+    [data setValue:@"YES" forKey:@"updateColors"];
   }
   
   [locationManager startUpdatingLocation];

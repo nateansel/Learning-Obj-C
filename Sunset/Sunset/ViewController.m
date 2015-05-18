@@ -24,8 +24,9 @@
   willSet.text = [data objectForKey:@"riseOrSet"];
   
   bool isSet = [[data objectForKey:@"isSet"] boolValue];
+  bool updateColors = [[data objectForKey:@"updateColors"] boolValue];
   
-  if (isSet) {
+  if (isSet && updateColors) {
     orangeGradientLayer.hidden = true;
     blueGradientLayer.hidden = false;
     // Set status bar to light color
