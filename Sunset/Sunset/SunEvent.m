@@ -36,9 +36,12 @@
   [self updateDictionary];
 
   // ISSUE: Need to run this notication every minute. Probably will have to use a timer
-  // If I do use a timer, maybe jusy updateView in the timer?
+  // If I do use a timer, maybe just updateView in the timer?
   [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView"
                                         object:nil];
+  
+  [data setValue:[NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude] forKey:@"lat"];
+  [data setValue:[NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude]forKey:@"long"];
 }
 
 - (void)locationManager:(CLLocationManager*)manager

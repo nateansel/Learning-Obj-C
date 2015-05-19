@@ -37,6 +37,10 @@
     // Set status bar to dark color
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
   }
+  
+  [myDefaults setValue:[data objectForKey:@"lat"] forKey:@"lat"];
+  [myDefaults setValue:[data objectForKey:@"long"] forKey:@"long"];
+  [myDefaults synchronize];
 }
 
 - (void)noLocationWarning {

@@ -10,10 +10,12 @@
 
 @interface SettingsViewController : UIViewController {
   IBOutlet UISwitch *notificationSetting;
+  IBOutlet UILabel *latitide;
+  IBOutlet UILabel *longitude;
   NSUserDefaults *myDefaults;
 }
 
 - (IBAction)dismissSettingsView:(id)sender;
-- (IBAction)changeNoticicationSetting:(id)sender;
+- (IBAction)changeNotificationSetting:(id)sender;
 
 @end

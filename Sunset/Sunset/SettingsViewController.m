@@ -14,7 +14,7 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)changeNoticicationSetting:(id)sender {
+- (IBAction)changeNotificationSetting:(id)sender {
   if ([notificationSetting isOn]) {
     [myDefaults setObject:@"YES" forKey:@"notificationSetting"];
     [myDefaults synchronize];
@@ -35,6 +35,9 @@
     [myDefaults synchronize];
   }
   notificationSetting.on = [[myDefaults objectForKey:@"notificationSetting"] boolValue];
+  
+  latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
+  longitude.text = [NSString stringWithFormat:@"Long: %.5f", [[myDefaults objectForKey:@"long"] doubleValue]];
   
 //  ViewController *viewController = (ViewController *)self.window.rootViewController;
 }
