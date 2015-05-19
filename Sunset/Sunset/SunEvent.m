@@ -206,9 +206,9 @@
   // If the sunrise or sunset is about to happen
   if (minutes < 5) {
     if (![self hasSunRisenToday] || [self hasSunSetToday]) {
-      riseOrSet = @"Sunrise is imminent";
+      return @"Sunrise is imminent";
     } else {
-      riseOrSet = @"Sunset is imminent";
+      return @"Sunset is imminent";
     }
   }
   
@@ -284,6 +284,46 @@
   } else {
     // the sun has set today
     return [self getTomorrowSunriseDate];
+  }
+}
+
+- (void)setNotifications {
+  UILocalNotification *notification;
+  int sunriseStartDate, sunsetStartDate;
+  
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm a"];
+  
+  if (![self hasSunRisenToday] && ([[self getTodaySunriseDate] timeIntervalSinceNow] > 3600)) {
+    sunriseStartDate = 0;
+  } else {
+    sunriseStartDate = 1;
+  }
+    
+  if (![self hasSunSetToday] && ([[self getTodaySunsetDate] timeIntervalSinceNow] > 3600)) {
+    sunsetStartDate = 0;
+  } else {
+    sunsetStartDate = 1;
+  }
+  
+  for (int i = sunriseStartDate; i < 30; i++) {
+    notification = [[UILocalNotification alloc] init];
+    [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * i)]];
+    notification.fireDate = [[calendar sunrise] dateByAddingTimeInterval:-3600];
+    notification.alertBody = @"1 hour until sunrise.";
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    NSLog([dateFormatter stringFromDate:[[calendar sunrise] dateByAddingTimeInterval:-3600]]);
+  }
+  
+  for (int j = sunsetStartDate; j < 30; j++) {
+    notification = [[UILocalNotification alloc] init];
+    [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * j)]];
+    notification.fireDate = [[calendar sunset] dateByAddingTimeInterval:-3600];
+    notification.alertBody = @"1 hour of sunlight left.";
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    NSLog([dateFormatter stringFromDate:[[calendar sunset] dateByAddingTimeInterval:-3600]]);
   }
 }
 

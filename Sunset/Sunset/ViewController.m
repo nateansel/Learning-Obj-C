@@ -90,11 +90,11 @@
 }
 
 - (BOOL)getNotificationSetting {
-  return [notificationSetting isOn];
+  return [[myDefaults objectForKey:@"notificationSetting"] boolValue];
 }
 
-- (NSDate *)getNextSunEvent {
-  return [sunEventObject getNextEvent];
+- (void)setNotifications {
+  [sunEventObject setNotifications];
 }
 
 - (void)viewDidLoad {
@@ -127,10 +127,6 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)dismissSettingsPage:(id)sender {
-  [self.view removeFromSuperview];
 }
 
 @end

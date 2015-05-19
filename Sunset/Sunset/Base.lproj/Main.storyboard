@@ -54,15 +54,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pz-OA-a2j">
-                                <rect key="frame" x="209" y="530" width="111" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqd-V6-2ez">
-                                <rect key="frame" x="343" y="530" width="51" height="31"/>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to enable location services in Settings for the app to work properly." textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybK-N2-xde">
                                 <rect key="frame" x="172" y="240" width="256" height="103"/>
                                 <constraints>
@@ -99,13 +90,8 @@
                             <constraint firstAttribute="centerX" secondItem="T4h-pk-06P" secondAttribute="centerX" id="MB8-Yc-Jzx"/>
                             <constraint firstItem="uq7-2P-jnL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="MlY-qM-BUH"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="aph-zF-CVU" secondAttribute="bottom" constant="8" id="OA2-g7-W4f"/>
-                            <constraint firstItem="2pz-OA-a2j" firstAttribute="top" secondItem="eqd-V6-2ez" secondAttribute="top" id="OTX-fg-xzT"/>
-                            <constraint firstItem="eqd-V6-2ez" firstAttribute="leading" secondItem="2pz-OA-a2j" secondAttribute="trailing" constant="23" id="W6j-2n-YXl"/>
-                            <constraint firstItem="eqd-V6-2ez" firstAttribute="top" secondItem="PwG-1Z-YP9" secondAttribute="bottom" constant="23" id="Yan-gn-rPa"/>
-                            <constraint firstItem="PwG-1Z-YP9" firstAttribute="leading" secondItem="2pz-OA-a2j" secondAttribute="leading" id="axa-BF-GWo"/>
                             <constraint firstItem="Dfx-TC-eTy" firstAttribute="top" secondItem="uq7-2P-jnL" secondAttribute="bottom" constant="56" id="dOG-k5-V4e"/>
                             <constraint firstItem="ybK-N2-xde" firstAttribute="top" secondItem="Dfx-TC-eTy" secondAttribute="bottom" constant="19" id="du5-4l-Yda"/>
-                            <constraint firstItem="PwG-1Z-YP9" firstAttribute="trailing" secondItem="eqd-V6-2ez" secondAttribute="trailing" id="i0Q-5f-I7t"/>
                             <constraint firstItem="uq7-2P-jnL" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="39" id="ktJ-6n-BUR"/>
                             <constraint firstAttribute="bottom" secondItem="PwG-1Z-YP9" secondAttribute="bottom" constant="93" id="tn6-PW-hwA"/>
                         </constraints>
@@ -113,7 +99,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="noLocation" destination="ybK-N2-xde" id="m7f-p8-UeM"/>
-                        <outlet property="notificationSetting" destination="eqd-V6-2ez" id="4d2-9L-cj3"/>
                         <outlet property="roundedButton" destination="PwG-1Z-YP9" id="ntr-lj-WSL"/>
                         <outlet property="timeLabel" destination="T4h-pk-06P" id="Kug-Us-jf8"/>
                         <outlet property="timeUntil" destination="Dfx-TC-eTy" id="yQj-vy-3sI"/>
@@ -154,6 +139,9 @@
                                     <constraint firstAttribute="width" constant="49" id="Mj7-Td-0GF"/>
                                     <constraint firstAttribute="height" constant="31" id="lmG-bG-63P"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changeNoticicationSetting:" destination="iVN-Lq-SjV" eventType="valueChanged" id="waG-Td-4zX"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI6-lf-wu4">
                                 <rect key="frame" x="16" y="63" width="96" height="21"/>
@@ -176,6 +164,9 @@
                             <constraint firstItem="QF8-fp-lf9" firstAttribute="top" secondItem="rqU-1O-3rx" secondAttribute="bottom" constant="8" id="lME-Wt-soc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="notificationSetting" destination="QF8-fp-lf9" id="cRD-b0-7Z3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH3-wH-oQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

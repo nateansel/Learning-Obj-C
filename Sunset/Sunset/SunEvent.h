@@ -42,6 +42,7 @@
 - (double)getLongitude;
 - (NSMutableDictionary*)updateDictionary;
 - (NSDate *)getNextEvent;
+- (void)setNotifications;
 
 @end
 

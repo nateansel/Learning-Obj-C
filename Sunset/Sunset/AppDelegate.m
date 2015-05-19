@@ -80,14 +80,12 @@
 }
 
 - (void)setNotifications {
+  [[UIApplication sharedApplication] cancelAllLocalNotifications];
+  
   ViewController *viewController = (ViewController *)self.window.rootViewController;
   
   if ([viewController getNotificationSetting]) {
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.fireDate = [[viewController getNextSunEvent] dateByAddingTimeInterval:-3600];
-    notification.alertBody = @"1 hour to next Sun event.";
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    [viewController setNotifications];
   }
 }
 

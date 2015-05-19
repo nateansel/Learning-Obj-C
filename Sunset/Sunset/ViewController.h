@@ -16,7 +16,6 @@
   IBOutlet UILabel *willSet;
   IBOutlet UILabel *noLocation;
   __weak IBOutlet UIButton *roundedButton;
-  IBOutlet UISwitch *notificationSetting;
   
   NSUserDefaults *myDefaults;
   
@@ -49,8 +48,7 @@
 - (void)fetchNewDataWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 - (BOOL)getNotificationSetting;
-- (NSDate *)getNextSunEvent;
-- (IBAction)dismissSettingsPage:(id)sender;
+- (void)setNotifications;
 
 @end
 

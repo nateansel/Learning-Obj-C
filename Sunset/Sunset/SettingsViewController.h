@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController {
+  IBOutlet UISwitch *notificationSetting;
+  NSUserDefaults *myDefaults;
+}
 
 - (IBAction)dismissSettingsView:(id)sender;
+- (IBAction)changeNoticicationSetting:(id)sender;
 
 @end

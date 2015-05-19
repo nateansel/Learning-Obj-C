@@ -8,19 +8,35 @@
 
 #import "SettingsViewController.h"
 
-@interface SettingsViewController ()
-
-@end
-
 @implementation SettingsViewController
 
 - (IBAction)dismissSettingsView:(id)sender {
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)changeNoticicationSetting:(id)sender {
+  if ([notificationSetting isOn]) {
+    [myDefaults setObject:@"YES" forKey:@"notificationSetting"];
+    [myDefaults synchronize];
+  } else {
+    [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
+    [myDefaults synchronize];
+  }
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  [super viewDidLoad];
+  // Do any additional setup after loading the view from its nib.
+  
+  myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
+  
+  if ([myDefaults objectForKey:@"notificationSetting"] == nil) {
+    [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
+    [myDefaults synchronize];
+  }
+  notificationSetting.on = [[myDefaults objectForKey:@"notificationSetting"] boolValue];
+  
+//  ViewController *viewController = (ViewController *)self.window.rootViewController;
 }
 
 - (void)didReceiveMemoryWarning {
