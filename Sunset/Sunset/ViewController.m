@@ -129,4 +129,8 @@
   // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)dismissSettingsPage:(id)sender {
+  [self.view removeFromSuperview];
+}
+
 @end

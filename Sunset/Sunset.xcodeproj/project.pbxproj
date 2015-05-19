@@ -49,6 +49,7 @@
 		2EE61F991B0430BE002FC960 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE61F981B0430BE002FC960 /* MainInterface.storyboard */; };
 		2EE61F9C1B0430BE002FC960 /* Sunset Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2EE61F8E1B0430BE002FC960 /* Sunset Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D820909D1B0674DA00E0C359 /* SunEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D820909C1B0674DA00E0C359 /* SunEvent.m */; };
+		D831F2681B0BC0A300992ACA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D831F2661B0BC0A300992ACA /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +248,8 @@
 		2EEA58391B04452900075930 /* KosherCocoa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KosherCocoa.h; sourceTree = "<group>"; };
 		D820909B1B06749400E0C359 /* SunEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SunEvent.h; sourceTree = "<group>"; };
 		D820909C1B0674DA00E0C359 /* SunEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SunEvent.m; sourceTree = "<group>"; };
+		D831F2651B0BC0A300992ACA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D831F2661B0BC0A300992ACA /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +309,8 @@
 				2E3C72321B0254CB003FD3F0 /* AppDelegate.h */,
 				2E3C72331B0254CB003FD3F0 /* AppDelegate.m */,
 				2E3C72351B0254CB003FD3F0 /* ViewController.h */,
+				D831F2651B0BC0A300992ACA /* SettingsViewController.h */,
+				D831F2661B0BC0A300992ACA /* SettingsViewController.m */,
 				2E3C72361B0254CB003FD3F0 /* ViewController.m */,
 				D820909B1B06749400E0C359 /* SunEvent.h */,
 				D820909C1B0674DA00E0C359 /* SunEvent.m */,
@@ -960,6 +965,7 @@
 				2E72CC8F1B03FDBB0082F991 /* KCParashatHashavuaCalculator.m in Sources */,
 				2E72CC951B03FDBB0082F991 /* KCAstronomicalCalculator.m in Sources */,
 				D820909D1B0674DA00E0C359 /* SunEvent.m in Sources */,
+				D831F2681B0BC0A300992ACA /* SettingsViewController.m in Sources */,
 				2E3C72311B0254CB003FD3F0 /* main.m in Sources */,
 				2E72CC941B03FDBB0082F991 /* KCZmanimCalendar.m in Sources */,
 			);

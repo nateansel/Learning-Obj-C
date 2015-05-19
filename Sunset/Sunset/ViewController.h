@@ -50,6 +50,7 @@
 
 - (BOOL)getNotificationSetting;
 - (NSDate *)getNextSunEvent;
+- (IBAction)dismissSettingsPage:(id)sender;
 
 @end
 
