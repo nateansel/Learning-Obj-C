@@ -98,7 +98,7 @@
 }
 
 - (void)setNotifications {
-  [sunEventObject setNotificationsWithSeconds: 60 * [[myDefaults objectForKey:@"notificationTimeCustomization"] integerValue]];
+  [sunEventObject setNotificationsWithSeconds: (int) (60 * [[myDefaults objectForKey:@"notificationTimeCustomization"] integerValue])];
 }
 
 - (void)viewDidLoad {

@@ -43,6 +43,7 @@
 - (NSMutableDictionary *)updateDictionary;
 - (NSDate *)getNextEvent;
 - (void)setNotificationsWithSeconds: (int) seconds;
+- (NSString *)makeStringFromSeconds: (int) seconds;
 
 @end
 
