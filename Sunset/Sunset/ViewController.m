@@ -41,6 +41,10 @@
   [myDefaults setValue:[data objectForKey:@"lat"] forKey:@"lat"];
   [myDefaults setValue:[data objectForKey:@"long"] forKey:@"long"];
   [myDefaults synchronize];
+  
+  if(self.navigationController.visibleViewController == [self.navigationController.viewControllers objectAtIndex:1]) {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+  }
 }
 
 - (void)noLocationWarning {

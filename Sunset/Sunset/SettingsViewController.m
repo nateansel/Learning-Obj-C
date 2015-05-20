@@ -66,7 +66,6 @@
     [myDefaults synchronize];
   }
   
-  
   notificationSetting.on = [[myDefaults objectForKey:@"notificationSetting"] boolValue];
   
   latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
@@ -78,6 +77,12 @@
   }
   
   stepper.value = [[myDefaults objectForKey:@"notificationTimeCustomization"] doubleValue];
+  
+  // Fix for off colored status bar in settings page
+  UIView *fixItView = [[UIView alloc] init];
+  fixItView.frame = CGRectMake(0, 0, 320, 20);
+  fixItView.backgroundColor = [UIColor colorWithRed:0.973 green:0.973 blue:0.973 alpha:1]; //change this to match your navigation bar
+  [self.view addSubview:fixItView];
 }
 
 - (void)didReceiveMemoryWarning {
