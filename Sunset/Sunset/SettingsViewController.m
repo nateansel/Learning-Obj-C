@@ -61,16 +61,23 @@
     [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
     [myDefaults synchronize];
   }
+  if ([myDefaults objectForKey:@"notificationTimeCustomization"]) {
+    [myDefaults setObject:@"60" forKey:@"notificationTimeCustomization"];
+    [myDefaults synchronize];
+  }
+  
   
   notificationSetting.on = [[myDefaults objectForKey:@"notificationSetting"] boolValue];
   
   latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
   longitude.text = [NSString stringWithFormat:@"Long: %.5f", [[myDefaults objectForKey:@"long"] doubleValue]];
-  notificationTime.text = [NSString stringWithFormat:@"%d", stepper.value];
+  notificationTime.text = [NSString stringWithFormat:@"%d", (int) stepper.value];
   
   if(![self notificationsEnabled]) {
     notificationSetting.on = NO;
   }
+  
+  stepper.value = [[myDefaults objectForKey:@"notificationTimeCustomization"] doubleValue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +86,9 @@
 }
 
 - (IBAction)stepperChange:(id)sender {
-  notificationTime.text = [NSString stringWithFormat:@"%d", stepper.value];
+  notificationTime.text = [NSString stringWithFormat:@"%d", (int) stepper.value];
+  [myDefaults setObject:notificationTime.text forKey:@"notificationTimeCustomization"];
+  [myDefaults synchronize];
 }
 
 /*

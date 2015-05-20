@@ -299,7 +299,7 @@
   }
 }
 
-- (void)setNotifications {
+- (void)setNotificationsWithSeconds: (int) seconds {
   UILocalNotification *notification;
   int sunriseStartDate, sunsetStartDate;
   
@@ -324,7 +324,7 @@
   for (int i = sunriseStartDate; i < 30; i++) {
     notification = [[UILocalNotification alloc] init];
     [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * i)]];
-    notification.fireDate = [[calendar sunrise] dateByAddingTimeInterval:-3600];
+    notification.fireDate = [[calendar sunrise] dateByAddingTimeInterval:-seconds];
     notification.alertBody = @"1 hour until sunrise.";
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
@@ -334,7 +334,7 @@
   for (int j = sunsetStartDate; j < 30; j++) {
     notification = [[UILocalNotification alloc] init];
     [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * j)]];
-    notification.fireDate = [[calendar sunset] dateByAddingTimeInterval:-3600];
+    notification.fireDate = [[calendar sunset] dateByAddingTimeInterval:-seconds];
     notification.alertBody = @"1 hour of sunlight left.";
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
