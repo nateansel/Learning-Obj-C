@@ -23,5 +23,6 @@
 - (void)checkNotifications;
 - (BOOL)notificationsEnabled;
 - (NSString *)makeStringFromMinuteInt: (int) minutes;
+- (IBAction)bishopButton:(id)sender;
 
 @end

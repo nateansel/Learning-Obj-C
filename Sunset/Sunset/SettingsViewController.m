@@ -106,6 +106,12 @@
   return [NSString stringWithFormat:@"1 hour and %d minutes",(minutes - 60)];
 }
 
+- (IBAction)bishopButton:(id)sender {
+  NSString *URL = @"http://d.pr/i/13KHZ+";
+  NSURL *myURL = [NSURL URLWithString:URL];
+  [[UIApplication sharedApplication] openURL:myURL];
+}
+
 /*
 #pragma mark - Navigation
 
