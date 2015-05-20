@@ -61,7 +61,7 @@
     [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
     [myDefaults synchronize];
   }
-  if ([myDefaults objectForKey:@"notificationTimeCustomization"]) {
+  if ([myDefaults objectForKey:@"notificationTimeCustomization"] == nil) {
     [myDefaults setObject:@"60" forKey:@"notificationTimeCustomization"];
     [myDefaults synchronize];
   }
@@ -70,7 +70,6 @@
   
   latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
   longitude.text = [NSString stringWithFormat:@"Long: %.5f", [[myDefaults objectForKey:@"long"] doubleValue]];
-  notificationTime.text = [NSString stringWithFormat:@"%d", (int) stepper.value];
   
   if(![self notificationsEnabled]) {
     notificationSetting.on = NO;
@@ -83,6 +82,8 @@
   fixItView.frame = CGRectMake(0, 0, 320, 20);
   fixItView.backgroundColor = [UIColor colorWithRed:0.973 green:0.973 blue:0.973 alpha:1]; //change this to match your navigation bar
   [self.view addSubview:fixItView];
+
+  notificationTime.text = [self makeStringFromMinuteInt:(int) stepper.value];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,9 +92,18 @@
 }
 
 - (IBAction)stepperChange:(id)sender {
-  notificationTime.text = [NSString stringWithFormat:@"%d", (int) stepper.value];
-  [myDefaults setObject:notificationTime.text forKey:@"notificationTimeCustomization"];
+  notificationTime.text = [self makeStringFromMinuteInt:(int) stepper.value];
+  [myDefaults setObject:[NSString stringWithFormat:@"%d",(int) stepper.value] forKey:@"notificationTimeCustomization"];
   [myDefaults synchronize];
+}
+
+- (NSString *)makeStringFromMinuteInt: (int) minutes {
+  if (minutes < 60) {
+    return [NSString stringWithFormat:@"%d minutes", minutes];
+  } else if (minutes == 60) {
+    return @"1 hour";
+  }
+  return [NSString stringWithFormat:@"1 hour and %d minutes",(minutes - 60)];
 }
 
 /*

@@ -22,5 +22,6 @@
 - (IBAction)stepperChange:(id)sender;
 - (void)checkNotifications;
 - (BOOL)notificationsEnabled;
+- (NSString *)makeStringFromMinuteInt: (int) minutes;
 
 @end
