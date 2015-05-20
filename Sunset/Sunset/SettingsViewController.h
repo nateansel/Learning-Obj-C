@@ -20,5 +20,7 @@
 - (IBAction)dismissSettingsView:(id)sender;
 - (IBAction)changeNotificationSetting:(id)sender;
 - (IBAction)stepperChange:(id)sender;
+- (void)checkNotifications;
+- (BOOL)notificationsEnabled;
 
 @end
