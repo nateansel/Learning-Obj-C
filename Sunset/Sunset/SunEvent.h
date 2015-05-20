@@ -24,23 +24,23 @@
 }
 
 - (SunEvent*)init;
-- (void)locationManager:(CLLocationManager*) manager
+- (void)locationManager:(CLLocationManager *) manager
         didUpdateLocations:(NSArray *)locations;
-- (void)locationManager:(CLLocationManager*)manager
+- (void)locationManager:(CLLocationManager *)manager
         didFailWithError:(NSError *)error;
 - (void)updateCalendar;
 - (void)updateLocation;
 - (void)stopUpdatingLocation;
-- (NSDate*)getTodaySunsetDate;
-- (NSDate*)getTodaySunriseDate;
-- (NSDate*)getTomorrowSunriseDate;
-- (NSString*)getRiseOrSetTimeString;
-- (NSString*)getTimeLeftString: (NSDate*) date;
+- (NSDate *)getTodaySunsetDate;
+- (NSDate *)getTodaySunriseDate;
+- (NSDate *)getTomorrowSunriseDate;
+- (NSString *)getRiseOrSetTimeString;
+- (NSString *)getTimeLeftString: (NSDate*) date;
 - (BOOL)hasSunRisenToday;
 - (BOOL)hasSunSetToday;
 - (double)getLatitude;
 - (double)getLongitude;
-- (NSMutableDictionary*)updateDictionary;
+- (NSMutableDictionary *)updateDictionary;
 - (NSDate *)getNextEvent;
 - (void)setNotifications;
 

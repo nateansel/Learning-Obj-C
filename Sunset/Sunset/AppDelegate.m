@@ -66,6 +66,7 @@
   [[UIApplication sharedApplication] cancelAllLocalNotifications];
   
   [viewController refresh];
+  
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

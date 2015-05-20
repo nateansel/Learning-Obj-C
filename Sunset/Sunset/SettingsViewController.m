@@ -42,6 +42,7 @@
   
   latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
   longitude.text = [NSString stringWithFormat:@"Long: %.5f", [[myDefaults objectForKey:@"long"] doubleValue]];
+  notificationTime.text = [NSString stringWithFormat:@"%d", stepper.value];
   
 //  ViewController *viewController = (ViewController *)self.window.rootViewController;
 }
@@ -49,6 +50,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)stepperChange:(id)sender {
+  notificationTime.text = [NSString stringWithFormat:@"%d", stepper.value];
 }
 
 /*

@@ -12,10 +12,13 @@
   IBOutlet UISwitch *notificationSetting;
   IBOutlet UILabel *latitide;
   IBOutlet UILabel *longitude;
+  IBOutlet UILabel *notificationTime;
+  IBOutlet UIStepper *stepper;
   NSUserDefaults *myDefaults;
 }
 
 - (IBAction)dismissSettingsView:(id)sender;
 - (IBAction)changeNotificationSetting:(id)sender;
+- (IBAction)stepperChange:(id)sender;
 
 @end
