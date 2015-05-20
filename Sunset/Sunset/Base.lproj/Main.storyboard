@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -141,19 +141,19 @@
                                     <action selector="changeNotificationSetting:" destination="iVN-Lq-SjV" eventType="valueChanged" id="xNy-Xn-2a4"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d5-3Y-ghS">
-                                <rect key="frame" x="16" y="140" width="174" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgd-wU-cXE">
+                                <rect key="frame" x="16" y="559" width="189" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="174" id="aLP-s7-heq"/>
+                                    <constraint firstAttribute="width" constant="189" id="TSf-Nh-mXd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgd-wU-cXE">
-                                <rect key="frame" x="16" y="192" width="189" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lat: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d5-3Y-ghS">
+                                <rect key="frame" x="16" y="530" width="174" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="189" id="TSf-Nh-mXd"/>
+                                    <constraint firstAttribute="width" constant="174" id="aLP-s7-heq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -164,10 +164,10 @@
                         <constraints>
                             <constraint firstItem="QF8-fp-lf9" firstAttribute="trailing" secondItem="rqU-1O-3rx" secondAttribute="trailing" id="CWO-h4-shC"/>
                             <constraint firstItem="Vgd-wU-cXE" firstAttribute="top" secondItem="5d5-3Y-ghS" secondAttribute="bottom" constant="31" id="K3Z-UN-OPE"/>
+                            <constraint firstItem="5oP-KZ-xVM" firstAttribute="top" secondItem="Vgd-wU-cXE" secondAttribute="bottom" constant="20" id="ZoY-aL-Xto"/>
                             <constraint firstItem="rqU-1O-3rx" firstAttribute="trailing" secondItem="lq9-7i-Jq9" secondAttribute="trailingMargin" id="bRO-4P-oDh"/>
                             <constraint firstItem="QF8-fp-lf9" firstAttribute="top" secondItem="rqU-1O-3rx" secondAttribute="bottom" constant="33" id="bh3-Gv-h7R"/>
                             <constraint firstItem="5d5-3Y-ghS" firstAttribute="leading" secondItem="HI6-lf-wu4" secondAttribute="leading" id="dqr-SY-YcL"/>
-                            <constraint firstItem="5d5-3Y-ghS" firstAttribute="top" secondItem="HI6-lf-wu4" secondAttribute="bottom" constant="31" id="eYP-PE-WH7"/>
                             <constraint firstItem="HI6-lf-wu4" firstAttribute="centerY" secondItem="QF8-fp-lf9" secondAttribute="centerY" id="nuz-0x-0je"/>
                             <constraint firstItem="rqU-1O-3rx" firstAttribute="top" secondItem="kfP-o6-2C8" secondAttribute="bottom" id="oyn-wo-jxZ"/>
                             <constraint firstItem="Vgd-wU-cXE" firstAttribute="leading" secondItem="lq9-7i-Jq9" secondAttribute="leadingMargin" id="q2e-eK-7PI"/>
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH3-wH-oQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="509"/>
+            <point key="canvasLocation" x="1042" y="143"/>
         </scene>
     </scenes>
 </document>
