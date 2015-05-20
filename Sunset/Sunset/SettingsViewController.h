@@ -17,5 +17,7 @@
 
 - (IBAction)dismissSettingsView:(id)sender;
 - (IBAction)changeNotificationSetting:(id)sender;
+- (void)checkNotifications;
+- (BOOL)notificationsEnabled;
 
 @end

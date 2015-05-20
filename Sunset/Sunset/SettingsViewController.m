@@ -17,6 +17,8 @@
 }
 
 - (IBAction)changeNotificationSetting:(id)sender {
+  [self checkNotifications];
+  
   if ([notificationSetting isOn]) {
     [myDefaults setObject:@"YES" forKey:@"notificationSetting"];
     [myDefaults synchronize];
@@ -24,6 +26,27 @@
     [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
     [myDefaults synchronize];
   }
+}
+
+- (void)checkNotifications {
+  if(![self notificationsEnabled]) {
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:@"You have notifications disabled. Please turn them on in Settings.app and try again."
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+    notificationSetting.on = NO;
+    [errorAlert show];
+  }
+}
+
+- (BOOL)notificationsEnabled {
+  UIUserNotificationSettings *noticationSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+  
+  if (!noticationSettings || (noticationSettings.types == UIUserNotificationTypeNone)) {
+    return NO;
+  }
+  return YES;
 }
 
 - (void)viewDidLoad {
@@ -38,12 +61,15 @@
     [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
     [myDefaults synchronize];
   }
+  
   notificationSetting.on = [[myDefaults objectForKey:@"notificationSetting"] boolValue];
   
   latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
   longitude.text = [NSString stringWithFormat:@"Long: %.5f", [[myDefaults objectForKey:@"long"] doubleValue]];
   
-//  ViewController *viewController = (ViewController *)self.window.rootViewController;
+  if(![self notificationsEnabled]) {
+    notificationSetting.on = NO;
+  }
 }
 
 - (void)didReceiveMemoryWarning {
