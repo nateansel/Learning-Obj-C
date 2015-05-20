@@ -11,6 +11,8 @@
 @implementation SettingsViewController
 
 - (IBAction)dismissSettingsView:(id)sender {
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView"
+                                                      object:nil];
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -27,6 +29,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
+  
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
   
   myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
   

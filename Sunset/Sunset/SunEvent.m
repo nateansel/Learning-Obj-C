@@ -46,13 +46,22 @@
 
 - (void)locationManager:(CLLocationManager*)manager
         didFailWithError:(NSError *)error {
-  UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                 message:@"There was an error retrieving your location"
-                                                 delegate:nil
-                                                 cancelButtonTitle:@"OK"
-                                                 otherButtonTitles: nil];
+  if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted
+      || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"noLocation"
+                                                        object:nil];
+    [data setValue:@"NO" forKey:@"updateColors"];
+  }
+  else {
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                         message:@"There was an error retrieving your location"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles: nil];
+    [errorAlert show];
+  }
+
   // Display error message as a popup alert
-  [errorAlert show];
   NSLog(@"Error: %@",error.description);
 }
 
@@ -297,6 +306,9 @@
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm a"];
   
+  // Determines the first day on which a notification will be scheduled
+  // 0 = today
+  // 1 = tomorrow
   if (![self hasSunRisenToday] && ([[self getTodaySunriseDate] timeIntervalSinceNow] > 3600)) {
     sunriseStartDate = 0;
   } else {
