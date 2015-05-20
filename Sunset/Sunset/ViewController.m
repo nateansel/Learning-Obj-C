@@ -40,6 +40,14 @@
   
   [myDefaults setValue:[data objectForKey:@"lat"] forKey:@"lat"];
   [myDefaults setValue:[data objectForKey:@"long"] forKey:@"long"];
+  
+  // make a string representation of the next sun event for the today widget
+  NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+  [formatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
+  NSLog([formatter stringFromDate:[sunEventObject getNextEvent]]);
+  [myDefaults setObject:[formatter stringFromDate:[sunEventObject getNextEvent]] forKey:@"nextSunEvent"];
+  
+  // synchronize the settings
   [myDefaults synchronize];
   
   if(self.navigationController.visibleViewController == [self.navigationController.viewControllers objectAtIndex:1]) {

@@ -43,13 +43,68 @@
   
   timeLabel.text = [myDefaults objectForKey:@"time"];
   willSet.text = [myDefaults objectForKey:@"riseOrSet"];
-  countdown.text = [myDefaults objectForKey:@"timeLeft"];
+  countdown.text = [self getTimeLeftString: [myDefaults objectForKey:@"nextSunEvent"]];
   
   if (isSet) {
     [countdown setHidden:NO];
   }
   
     completionHandler(NCUpdateResultNewData);
+}
+
+- (NSString *)getTimeLeftString: (NSString *) nextTimeString {
+  // Set up the date formatter to change the string to a NSDate object for proper calculations
+  NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+  [formatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
+  
+  // declare some variables
+  double tempTimeNum;
+  int hours, minutes;
+  NSString *minuteString, *riseOrSet;
+  NSDate *nextSunEvent = [formatter dateFromString:nextTimeString];
+  
+  tempTimeNum = [nextSunEvent timeIntervalSinceNow];  // the time difference between event and now in seconds
+  hours = ((int) tempTimeNum) / 3600;  // integer division with total seconds / seconds per hour
+  minutes = (tempTimeNum - (hours * 3600)) / 60;  // integer division with the remaining seconds / seconds per minute
+  
+  if ([[myDefaults objectForKey:@"isSet"] boolValue]) {
+    riseOrSet = @"until the sun rises";
+  } else {
+    riseOrSet = @"of sunlight left";
+  }
+  
+  // Determine how to display the minutes
+  if (minutes > 45) {
+    // Increase the hour variable to compensate for not showing minutes
+    hours++;
+    minuteString = @"";
+  } else if (minutes > 30) {
+    minuteString = @"¾";
+  } else if (minutes > 15) {
+    minuteString = @"½";
+  } else {
+    minuteString = @"¼";
+  }
+  
+  // If more than 45 minutes left until the sunrise or sunset
+  if (hours > 0) {
+    if (hours == 1 && minutes > 45) {
+      return [NSString stringWithFormat:@"%d%@ hour %@.", hours, minuteString, riseOrSet];
+    }
+    return [NSString stringWithFormat:@"%d%@ hours %@.", hours, minuteString, riseOrSet];
+  }
+  
+  // If the sunrise or sunset is about to happen
+  if (minutes < 5) {
+    if ([[myDefaults objectForKey:@"isSet"] boolValue]) {
+      return @"Sunrise is imminent";
+    } else {
+      return @"Sunset is imminent";
+    }
+  }
+  
+  // If there is less than an hour but more than 4 minutes left before the sunrise or sunset
+  return [NSString stringWithFormat:@"%d minutes %@", minutes, riseOrSet];
 }
 
 @end

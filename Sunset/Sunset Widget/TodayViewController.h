@@ -18,5 +18,6 @@
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets;
+- (NSString *)getTimeLeftString: (NSString *) nextTimeString;
 
 @end

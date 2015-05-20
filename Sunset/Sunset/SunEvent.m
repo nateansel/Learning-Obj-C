@@ -330,7 +330,7 @@
     notification.alertBody = [[self makeStringFromSeconds:seconds] stringByAppendingString:@" until sunrise."];
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    NSLog([sunriseTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunrise] dateByAddingTimeInterval:-seconds]]]);
+    //NSLog([sunriseTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunrise] dateByAddingTimeInterval:-seconds]]]);
   }
   
   for (int j = sunsetStartDate; j < 30; j++) {
@@ -340,7 +340,7 @@
     notification.alertBody = [[self makeStringFromSeconds:seconds] stringByAppendingString:@" of sunlight left."];
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    NSLog([sunsetTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunset] dateByAddingTimeInterval:-seconds]]]);
+    //NSLog([sunsetTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunset] dateByAddingTimeInterval:-seconds]]]);
   }
 }
 
