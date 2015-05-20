@@ -85,9 +85,7 @@
   
   ViewController *viewController = (ViewController *)self.window.rootViewController;
   
-  if ([viewController getNotificationSetting]) {
-    [viewController setNotifications];
-  }
+  [viewController setNotifications];
 }
 
 @end

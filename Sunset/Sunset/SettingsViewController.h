@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController {
-  IBOutlet UISwitch *notificationSetting;
+  IBOutlet UISwitch *sunsetNotificationSetting;
+  IBOutlet UISwitch *sunriseNotificationSetting;
   IBOutlet UILabel *latitide;
   IBOutlet UILabel *longitude;
   IBOutlet UILabel *notificationTime;
@@ -18,7 +19,8 @@
 }
 
 - (IBAction)dismissSettingsView:(id)sender;
-- (IBAction)changeNotificationSetting:(id)sender;
+- (IBAction)changeSunsetNotificationSetting:(id)sender;
+- (IBAction)changeSunriseNotificationSetting:(id)sender;
 - (IBAction)stepperChange:(id)sender;
 - (void)checkNotifications;
 - (BOOL)notificationsEnabled;

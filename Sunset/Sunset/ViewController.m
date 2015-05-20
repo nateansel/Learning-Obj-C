@@ -110,7 +110,9 @@
 }
 
 - (void)setNotifications {
-  [sunEventObject setNotificationsWithSeconds: (int) (60 * [[myDefaults objectForKey:@"notificationTimeCustomization"] integerValue])];
+  [sunEventObject setNotificationsWithSeconds: (int) (60 * [[myDefaults objectForKey:@"notificationTimeCustomization"] integerValue])
+                                    andSunset: [[myDefaults objectForKey:@"sunsetNotificationSetting"] boolValue]
+                                   andSunrise: [[myDefaults objectForKey:@"sunriseNotificationSetting"] boolValue]];
 }
 
 - (void)viewDidLoad {

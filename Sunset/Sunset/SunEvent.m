@@ -299,7 +299,7 @@
   }
 }
 
-- (void)setNotificationsWithSeconds: (int) seconds {
+- (void)setNotificationsWithSeconds: (int) seconds andSunset: (BOOL) sunset andSunrise: (BOOL) sunrise {
   UILocalNotification *notification;
   int sunriseStartDate, sunsetStartDate;
   
@@ -323,24 +323,28 @@
     sunsetStartDate = 1;
   }
   
-  for (int i = sunriseStartDate; i < 30; i++) {
-    notification = [[UILocalNotification alloc] init];
-    [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * i)]];
-    notification.fireDate = [[calendar sunrise] dateByAddingTimeInterval:-seconds];
-    notification.alertBody = [[self makeStringFromSeconds:seconds] stringByAppendingString:@" until sunrise."];
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    //NSLog([sunriseTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunrise] dateByAddingTimeInterval:-seconds]]]);
+  if (sunrise) {
+    for (int i = sunriseStartDate; i < 30; i++) {
+      notification = [[UILocalNotification alloc] init];
+      [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * i)]];
+      notification.fireDate = [[calendar sunrise] dateByAddingTimeInterval:-seconds];
+      notification.alertBody = [[self makeStringFromSeconds:seconds] stringByAppendingString:@" until sunrise."];
+      notification.soundName = UILocalNotificationDefaultSoundName;
+      [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+      NSLog([sunriseTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunrise] dateByAddingTimeInterval:-seconds]]]);
+    }
   }
   
-  for (int j = sunsetStartDate; j < 30; j++) {
-    notification = [[UILocalNotification alloc] init];
-    [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * j)]];
-    notification.fireDate = [[calendar sunset] dateByAddingTimeInterval:-seconds];
-    notification.alertBody = [[self makeStringFromSeconds:seconds] stringByAppendingString:@" of sunlight left."];
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    //NSLog([sunsetTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunset] dateByAddingTimeInterval:-seconds]]]);
+  if (sunset) {
+    for (int j = sunsetStartDate; j < 30; j++) {
+      notification = [[UILocalNotification alloc] init];
+      [calendar setWorkingDate:[[NSDate date] dateByAddingTimeInterval:(86400 * j)]];
+      notification.fireDate = [[calendar sunset] dateByAddingTimeInterval:-seconds];
+      notification.alertBody = [[self makeStringFromSeconds:seconds] stringByAppendingString:@" of sunlight left."];
+      notification.soundName = UILocalNotificationDefaultSoundName;
+      [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+      NSLog([sunsetTestString stringByAppendingString:[dateFormatter stringFromDate:[[calendar sunset] dateByAddingTimeInterval:-seconds]]]);
+    }
   }
 }
 

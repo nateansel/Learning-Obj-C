@@ -16,14 +16,26 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)changeNotificationSetting:(id)sender {
+- (IBAction)changeSunsetNotificationSetting:(id)sender {
   [self checkNotifications];
   
-  if ([notificationSetting isOn]) {
-    [myDefaults setObject:@"YES" forKey:@"notificationSetting"];
+  if ([sunsetNotificationSetting isOn]) {
+    [myDefaults setObject:@"YES" forKey:@"sunsetNotificationSetting"];
     [myDefaults synchronize];
   } else {
-    [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
+    [myDefaults setObject:@"NO" forKey:@"sunsetNotificationSetting"];
+    [myDefaults synchronize];
+  }
+}
+
+- (IBAction)changeSunriseNotificationSetting:(id)sender {
+  [self checkNotifications];
+  
+  if ([sunriseNotificationSetting isOn]) {
+    [myDefaults setObject:@"YES" forKey:@"sunriseNotificationSetting"];
+    [myDefaults synchronize];
+  } else {
+    [myDefaults setObject:@"NO" forKey:@"sunriseNotificationSetting"];
     [myDefaults synchronize];
   }
 }
@@ -35,7 +47,8 @@
                                                         delegate:nil
                                                cancelButtonTitle:@"OK"
                                                otherButtonTitles: nil];
-    notificationSetting.on = NO;
+    sunsetNotificationSetting.on = NO;
+    sunriseNotificationSetting.on = NO;
     [errorAlert show];
   }
 }
@@ -57,8 +70,12 @@
   
   myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.nathanchase.sunset"];
   
-  if ([myDefaults objectForKey:@"notificationSetting"] == nil) {
-    [myDefaults setObject:@"NO" forKey:@"notificationSetting"];
+  if ([myDefaults objectForKey:@"sunsetNotificationSetting"] == nil) {
+    [myDefaults setObject:@"NO" forKey:@"sunsetNotificationSetting"];
+    [myDefaults synchronize];
+  }
+  if ([myDefaults objectForKey:@"sunriseNotificationSetting"] == nil) {
+    [myDefaults setObject:@"NO" forKey:@"sunriseNotificationSetting"];
     [myDefaults synchronize];
   }
   if ([myDefaults objectForKey:@"notificationTimeCustomization"] == nil) {
@@ -66,13 +83,15 @@
     [myDefaults synchronize];
   }
   
-  notificationSetting.on = [[myDefaults objectForKey:@"notificationSetting"] boolValue];
+  sunsetNotificationSetting.on = [[myDefaults objectForKey:@"sunsetNotificationSetting"] boolValue];
+  sunriseNotificationSetting.on = [[myDefaults objectForKey:@"sunriseNotificationSetting"] boolValue];
   
   latitide.text = [NSString stringWithFormat:@"Lat: %.5f", [[myDefaults objectForKey:@"lat"] doubleValue]];
   longitude.text = [NSString stringWithFormat:@"Long: %.5f", [[myDefaults objectForKey:@"long"] doubleValue]];
   
   if(![self notificationsEnabled]) {
-    notificationSetting.on = NO;
+    sunsetNotificationSetting.on = NO;
+    sunriseNotificationSetting.on = NO;
   }
   
   stepper.value = [[myDefaults objectForKey:@"notificationTimeCustomization"] doubleValue];
