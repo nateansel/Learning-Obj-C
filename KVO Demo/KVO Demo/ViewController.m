@@ -21,7 +21,11 @@
   self.customObject = [[MyCustomClass alloc] init];
   self.anotherCustomObject = [[AnotherCustomClass alloc] init];
   
-  [self.customObject addObserver:self.anotherCustomObject forKeyPath:NSStringFromSelector(@selector(objectProperty)) options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+  [self.customObject addObserver:self.anotherCustomObject
+                      forKeyPath:NSStringFromSelector(@selector(objectProperty))
+                         options:NSKeyValueObservingOptionNew
+                                 | NSKeyValueObservingOptionOld
+                         context:nil];
 }
 
 - (IBAction)slider:(id)sender {
